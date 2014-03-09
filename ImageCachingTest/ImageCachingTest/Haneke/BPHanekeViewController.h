@@ -1,5 +1,5 @@
 //
-//  BPTableViewCell.m
+//  BPHanekeViewController.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,30 +21,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import "BPTableViewCell.h"
-#import <Masonry.h>
+#import "BPImagesTableViewController.h"
 
-@implementation BPTableViewCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        self.textLabel.font = [UIFont systemFontOfSize:10];
-        self.textLabel.textAlignment = NSTextAlignmentRight;
-        self.customImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 60, 60)];
-        self.customImageView.clipsToBounds = YES;
-        self.customImageView.contentMode = UIViewContentModeScaleAspectFill;
-        [self.contentView addSubview:self.customImageView];
-        
-        [self.customImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@60);
-            make.width.equalTo(@60);
-            make.centerY.equalTo(self.mas_centerY);
-            make.left.equalTo(@10);
-        }];
-
-    }
-    return self;
-}
+@interface BPHanekeViewController : BPImagesTableViewController
 
 @end

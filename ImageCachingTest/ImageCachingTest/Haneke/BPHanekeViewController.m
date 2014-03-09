@@ -1,5 +1,5 @@
 //
-//  BPTableViewCell.m
+//  BPHanekeViewController.m
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,30 +21,41 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import "BPTableViewCell.h"
-#import <Masonry.h>
+#import "BPHanekeViewController.h"
+#import <UIImageView+Haneke.h>
 
-@implementation BPTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+@interface BPHanekeViewController ()
+
+@end
+
+
+@implementation BPHanekeViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.textLabel.font = [UIFont systemFontOfSize:10];
-        self.textLabel.textAlignment = NSTextAlignmentRight;
-        self.customImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 60, 60)];
-        self.customImageView.clipsToBounds = YES;
-        self.customImageView.contentMode = UIViewContentModeScaleAspectFill;
-        [self.contentView addSubview:self.customImageView];
-        
-        [self.customImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@60);
-            make.width.equalTo(@60);
-            make.centerY.equalTo(self.mas_centerY);
-            make.left.equalTo(@10);
-        }];
-
+        // Custom initialization
+        self.title = @"Haneke";
     }
     return self;
 }
+
+#pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    BPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBPCellID];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%d %d", indexPath.section, indexPath.row];
+    NSURL *url = [self imageUrlForIndexPath:indexPath];
+    cell.imageUrl = url;
+    cell.customImageView.image = nil;
+    
+    [cell.customImageView hnk_setImageFromURL:url];
+    
+    return cell;
+}
+
 
 @end
