@@ -22,7 +22,6 @@
 //  SOFTWARE.
 
 #import "BPSDWebImageViewController.h"
-#import "BPTableViewCell.h"
 #import <UIImageView+WebCache.h>
 
 

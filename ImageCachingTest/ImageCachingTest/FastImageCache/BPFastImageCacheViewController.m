@@ -22,7 +22,6 @@
 //  SOFTWARE.
 
 #import "BPFastImageCacheViewController.h"
-#import "BPTableViewCell.h"
 #import "FICDPhoto.h"
 #import <FICImageCache.h>
 

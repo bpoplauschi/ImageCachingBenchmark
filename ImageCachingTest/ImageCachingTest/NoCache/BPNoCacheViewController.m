@@ -22,7 +22,6 @@
 //  SOFTWARE.
 
 #import "BPNoCacheViewController.h"
-#import "BPTableViewCell.h"
 
 static CGFloat totalRetrieveTime = 0.0f;
 static NSInteger numberOfRetrieves = 0;

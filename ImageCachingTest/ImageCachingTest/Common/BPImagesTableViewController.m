@@ -23,7 +23,6 @@
 
 #import "BPImagesTableViewController.h"
 #import "FICDTableView.h"
-#import "BPTableViewCell.h"
 #import <Masonry.h>
 
 
