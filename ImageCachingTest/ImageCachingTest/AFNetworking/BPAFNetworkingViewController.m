@@ -48,6 +48,8 @@ static NSInteger numberOfRetrievesFromCache    = 0;
     return self;
 }
 
+#pragma mark - UITableViewDataSource
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     BPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBPCellID];

@@ -27,6 +27,7 @@
 #import "BPSDWebImageViewController.h"
 #import "BPFastImageCacheViewController.h"
 #import "BPAFNetworkingViewController.h"
+#import "BPTMCacheViewController.h"
 
 
 @interface BPViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -47,8 +48,9 @@
         BPSDWebImageViewController *sdWebImageVC = [BPSDWebImageViewController new];
         BPFastImageCacheViewController *fastImageCacheVC = [BPFastImageCacheViewController new];
         BPAFNetworkingViewController *afNetworkingVC = [BPAFNetworkingViewController new];
+        BPTMCacheViewController *tmCacheVC = [BPTMCacheViewController new];
         
-        self.controllers = @[noCacheVC, sdWebImageVC, fastImageCacheVC, afNetworkingVC];
+        self.controllers = @[noCacheVC, sdWebImageVC, fastImageCacheVC, afNetworkingVC, tmCacheVC];
         
         self.title = @"Menu";
     }

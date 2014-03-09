@@ -30,6 +30,7 @@
 		43E5D81518CD029100091E7D /* FICDPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81418CD029100091E7D /* FICDPhoto.m */; };
 		43E5D81918CD0A0800091E7D /* BPAFNetworkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81818CD0A0800091E7D /* BPAFNetworkingViewController.m */; };
 		43E5D81C18CD107C00091E7D /* BPFullScreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */; };
+		43E5D82018CD19AE00091E7D /* BPTMCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		43E5D81818CD0A0800091E7D /* BPAFNetworkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAFNetworkingViewController.m; sourceTree = "<group>"; };
 		43E5D81A18CD107C00091E7D /* BPFullScreenImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFullScreenImageViewController.h; sourceTree = "<group>"; };
 		43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFullScreenImageViewController.m; sourceTree = "<group>"; };
+		43E5D81E18CD19AE00091E7D /* BPTMCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTMCacheViewController.h; sourceTree = "<group>"; };
+		43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTMCacheViewController.m; sourceTree = "<group>"; };
 		7DF61607AD5D47F1B41C966F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B104E612267F4AA481421A00 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +153,7 @@
 				43E5D80818CCFA8300091E7D /* SDWebImage */,
 				43E5D80F18CD013000091E7D /* FastImageCache */,
 				43E5D81618CD09CB00091E7D /* AFNetworking */,
+				43E5D81D18CD199D00091E7D /* TMCache */,
 				4371F10818CC4CFE00D90E35 /* Supporting Files */,
 			);
 			path = ImageCachingTest;
@@ -246,6 +250,15 @@
 				43E5D81818CD0A0800091E7D /* BPAFNetworkingViewController.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		43E5D81D18CD199D00091E7D /* TMCache */ = {
+			isa = PBXGroup;
+			children = (
+				43E5D81E18CD19AE00091E7D /* BPTMCacheViewController.h */,
+				43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */,
+			);
+			path = TMCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +404,7 @@
 				43E5D80318CCF8C400091E7D /* FICDTableView.m in Sources */,
 				43E5D81C18CD107C00091E7D /* BPFullScreenImageViewController.m in Sources */,
 				43E5D80E18CCFB0200091E7D /* BPImagesTableViewController.m in Sources */,
+				43E5D82018CD19AE00091E7D /* BPTMCacheViewController.m in Sources */,
 				43E5D81218CD014500091E7D /* BPFastImageCacheViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
