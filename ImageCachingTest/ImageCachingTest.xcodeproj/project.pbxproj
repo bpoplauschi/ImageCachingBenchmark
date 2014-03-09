@@ -13,17 +13,17 @@
 		4371F10618CC4CFD00D90E35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4371F10518CC4CFD00D90E35 /* UIKit.framework */; };
 		4371F10C18CC4CFE00D90E35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4371F10A18CC4CFE00D90E35 /* InfoPlist.strings */; };
 		4371F10E18CC4CFE00D90E35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4371F10D18CC4CFE00D90E35 /* main.m */; };
-		4371F11218CC4CFE00D90E35 /* BPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4371F11118CC4CFE00D90E35 /* BPAppDelegate.m */; };
-		4371F11B18CC4CFE00D90E35 /* BPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4371F11A18CC4CFE00D90E35 /* BPViewController.m */; };
 		4371F11D18CC4CFE00D90E35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4371F11C18CC4CFE00D90E35 /* Images.xcassets */; };
 		4371F12418CC4CFE00D90E35 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4371F12318CC4CFE00D90E35 /* XCTest.framework */; };
 		4371F12518CC4CFE00D90E35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4371F10118CC4CFD00D90E35 /* Foundation.framework */; };
 		4371F12618CC4CFE00D90E35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4371F10518CC4CFD00D90E35 /* UIKit.framework */; };
 		4371F12E18CC4CFE00D90E35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4371F12C18CC4CFE00D90E35 /* InfoPlist.strings */; };
 		4371F13018CC4CFE00D90E35 /* ImageCachingTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4371F12F18CC4CFE00D90E35 /* ImageCachingTestTests.m */; };
-		4371F13B18CC532000D90E35 /* BPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4371F13A18CC532000D90E35 /* BPTableViewCell.m */; };
-		43E5D7F118CCE8D300091E7D /* BPNoCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D7F018CCE8D300091E7D /* BPNoCacheViewController.m */; };
-		43E5D7F418CCF13700091E7D /* FICDTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D7F318CCF13700091E7D /* FICDTableView.m */; };
+		43E5D7FD18CCF8BF00091E7D /* BPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D7F818CCF8BF00091E7D /* BPAppDelegate.m */; };
+		43E5D7FE18CCF8BF00091E7D /* BPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D7FA18CCF8BF00091E7D /* BPTableViewCell.m */; };
+		43E5D7FF18CCF8BF00091E7D /* BPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D7FC18CCF8BF00091E7D /* BPViewController.m */; };
+		43E5D80318CCF8C400091E7D /* FICDTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D80218CCF8C400091E7D /* FICDTableView.m */; };
+		43E5D80718CCF8CB00091E7D /* BPNoCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D80618CCF8CB00091E7D /* BPNoCacheViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,22 +45,22 @@
 		4371F10B18CC4CFE00D90E35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4371F10D18CC4CFE00D90E35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4371F10F18CC4CFE00D90E35 /* ImageCachingTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageCachingTest-Prefix.pch"; sourceTree = "<group>"; };
-		4371F11018CC4CFE00D90E35 /* BPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPAppDelegate.h; sourceTree = "<group>"; };
-		4371F11118CC4CFE00D90E35 /* BPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPAppDelegate.m; sourceTree = "<group>"; };
-		4371F11918CC4CFE00D90E35 /* BPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPViewController.h; sourceTree = "<group>"; };
-		4371F11A18CC4CFE00D90E35 /* BPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPViewController.m; sourceTree = "<group>"; };
 		4371F11C18CC4CFE00D90E35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4371F12218CC4CFE00D90E35 /* ImageCachingTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageCachingTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4371F12318CC4CFE00D90E35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4371F12B18CC4CFE00D90E35 /* ImageCachingTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImageCachingTestTests-Info.plist"; sourceTree = "<group>"; };
 		4371F12D18CC4CFE00D90E35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4371F12F18CC4CFE00D90E35 /* ImageCachingTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCachingTestTests.m; sourceTree = "<group>"; };
-		4371F13918CC532000D90E35 /* BPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTableViewCell.h; sourceTree = "<group>"; };
-		4371F13A18CC532000D90E35 /* BPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTableViewCell.m; sourceTree = "<group>"; };
-		43E5D7EF18CCE8D300091E7D /* BPNoCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPNoCacheViewController.h; sourceTree = "<group>"; };
-		43E5D7F018CCE8D300091E7D /* BPNoCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPNoCacheViewController.m; sourceTree = "<group>"; };
-		43E5D7F218CCF13700091E7D /* FICDTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICDTableView.h; sourceTree = "<group>"; };
-		43E5D7F318CCF13700091E7D /* FICDTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICDTableView.m; sourceTree = "<group>"; };
+		43E5D7F718CCF8BF00091E7D /* BPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAppDelegate.h; sourceTree = "<group>"; };
+		43E5D7F818CCF8BF00091E7D /* BPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAppDelegate.m; sourceTree = "<group>"; };
+		43E5D7F918CCF8BF00091E7D /* BPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTableViewCell.h; sourceTree = "<group>"; };
+		43E5D7FA18CCF8BF00091E7D /* BPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTableViewCell.m; sourceTree = "<group>"; };
+		43E5D7FB18CCF8BF00091E7D /* BPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPViewController.h; sourceTree = "<group>"; };
+		43E5D7FC18CCF8BF00091E7D /* BPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPViewController.m; sourceTree = "<group>"; };
+		43E5D80118CCF8C400091E7D /* FICDTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICDTableView.h; sourceTree = "<group>"; };
+		43E5D80218CCF8C400091E7D /* FICDTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICDTableView.m; sourceTree = "<group>"; };
+		43E5D80518CCF8CB00091E7D /* BPNoCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPNoCacheViewController.h; sourceTree = "<group>"; };
+		43E5D80618CCF8CB00091E7D /* BPNoCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPNoCacheViewController.m; sourceTree = "<group>"; };
 		7DF61607AD5D47F1B41C966F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B104E612267F4AA481421A00 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,16 +125,10 @@
 		4371F10718CC4CFE00D90E35 /* ImageCachingTest */ = {
 			isa = PBXGroup;
 			children = (
-				4371F11018CC4CFE00D90E35 /* BPAppDelegate.h */,
-				4371F11118CC4CFE00D90E35 /* BPAppDelegate.m */,
-				4371F11918CC4CFE00D90E35 /* BPViewController.h */,
-				4371F11A18CC4CFE00D90E35 /* BPViewController.m */,
-				4371F13918CC532000D90E35 /* BPTableViewCell.h */,
-				4371F13A18CC532000D90E35 /* BPTableViewCell.m */,
-				43E5D7F218CCF13700091E7D /* FICDTableView.h */,
-				43E5D7F318CCF13700091E7D /* FICDTableView.m */,
-				43E5D7F518CCF13B00091E7D /* NoCache */,
 				4371F11C18CC4CFE00D90E35 /* Images.xcassets */,
+				43E5D7F618CCF8BF00091E7D /* Common */,
+				43E5D80018CCF8C400091E7D /* FICD */,
+				43E5D80418CCF8CB00091E7D /* NoCache */,
 				4371F10818CC4CFE00D90E35 /* Supporting Files */,
 			);
 			path = ImageCachingTest;
@@ -169,13 +163,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		43E5D7F518CCF13B00091E7D /* NoCache */ = {
+		43E5D7F618CCF8BF00091E7D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				43E5D7EF18CCE8D300091E7D /* BPNoCacheViewController.h */,
-				43E5D7F018CCE8D300091E7D /* BPNoCacheViewController.m */,
+				43E5D7F718CCF8BF00091E7D /* BPAppDelegate.h */,
+				43E5D7F818CCF8BF00091E7D /* BPAppDelegate.m */,
+				43E5D7F918CCF8BF00091E7D /* BPTableViewCell.h */,
+				43E5D7FA18CCF8BF00091E7D /* BPTableViewCell.m */,
+				43E5D7FB18CCF8BF00091E7D /* BPViewController.h */,
+				43E5D7FC18CCF8BF00091E7D /* BPViewController.m */,
 			);
-			name = NoCache;
+			path = Common;
+			sourceTree = "<group>";
+		};
+		43E5D80018CCF8C400091E7D /* FICD */ = {
+			isa = PBXGroup;
+			children = (
+				43E5D80118CCF8C400091E7D /* FICDTableView.h */,
+				43E5D80218CCF8C400091E7D /* FICDTableView.m */,
+			);
+			path = FICD;
+			sourceTree = "<group>";
+		};
+		43E5D80418CCF8CB00091E7D /* NoCache */ = {
+			isa = PBXGroup;
+			children = (
+				43E5D80518CCF8CB00091E7D /* BPNoCacheViewController.h */,
+				43E5D80618CCF8CB00091E7D /* BPNoCacheViewController.m */,
+			);
+			path = NoCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,12 +326,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43E5D7F118CCE8D300091E7D /* BPNoCacheViewController.m in Sources */,
-				4371F11B18CC4CFE00D90E35 /* BPViewController.m in Sources */,
-				4371F13B18CC532000D90E35 /* BPTableViewCell.m in Sources */,
-				4371F11218CC4CFE00D90E35 /* BPAppDelegate.m in Sources */,
+				43E5D7FE18CCF8BF00091E7D /* BPTableViewCell.m in Sources */,
+				43E5D7FD18CCF8BF00091E7D /* BPAppDelegate.m in Sources */,
+				43E5D80718CCF8CB00091E7D /* BPNoCacheViewController.m in Sources */,
+				43E5D7FF18CCF8BF00091E7D /* BPViewController.m in Sources */,
 				4371F10E18CC4CFE00D90E35 /* main.m in Sources */,
-				43E5D7F418CCF13700091E7D /* FICDTableView.m in Sources */,
+				43E5D80318CCF8C400091E7D /* FICDTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
