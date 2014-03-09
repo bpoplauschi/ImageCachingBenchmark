@@ -23,6 +23,12 @@
 
 #import "BPAppDelegate.h"
 #import "BPViewController.h"
+#import <FICImageCache.h>
+
+@interface BPAppDelegate () <FICImageCacheDelegate>
+
+@end
+
 
 @implementation BPAppDelegate
 
@@ -33,7 +39,36 @@
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
+    [self configureFastImageCache];
+    
     return YES;
+}
+
+-(void)configureFastImageCache {
+    FICImageFormat *mediumUserThumbnailImageFormat = [[FICImageFormat alloc] init];
+    mediumUserThumbnailImageFormat.name = @"32BitBGR";
+    mediumUserThumbnailImageFormat.family = @"Family";
+    mediumUserThumbnailImageFormat.style = FICImageFormatStyle32BitBGR;
+    mediumUserThumbnailImageFormat.imageSize = CGSizeMake(200, 200);
+    mediumUserThumbnailImageFormat.maximumCount = 500;
+    mediumUserThumbnailImageFormat.devices = FICImageFormatDevicePhone | FICImageFormatDevicePad;
+    
+    FICImageCache *sharedImageCache = [FICImageCache sharedImageCache];
+    sharedImageCache.delegate = self;
+    [sharedImageCache setFormats:@[mediumUserThumbnailImageFormat]];
+}
+
+#pragma mark FICImageCacheDelegate
+- (void)imageCache:(FICImageCache *)imageCache wantsSourceImageForEntity:(id<FICEntity>)entity withFormatName:(NSString *)formatName completionBlock:(FICImageRequestCompletionBlock)completionBlock {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Fetch the desired source image by making a network request
+        NSURL *requestURL = [entity sourceImageURLWithFormatName:formatName];
+        UIImage *sourceImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:requestURL]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionBlock(sourceImage);
+        });
+    });
 }
 
 @end

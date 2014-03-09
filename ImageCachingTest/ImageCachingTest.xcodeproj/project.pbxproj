@@ -26,6 +26,8 @@
 		43E5D80718CCF8CB00091E7D /* BPNoCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D80618CCF8CB00091E7D /* BPNoCacheViewController.m */; };
 		43E5D80B18CCFA9400091E7D /* BPSDWebImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D80A18CCFA9400091E7D /* BPSDWebImageViewController.m */; };
 		43E5D80E18CCFB0200091E7D /* BPImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D80D18CCFB0200091E7D /* BPImagesTableViewController.m */; };
+		43E5D81218CD014500091E7D /* BPFastImageCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81118CD014500091E7D /* BPFastImageCacheViewController.m */; };
+		43E5D81518CD029100091E7D /* FICDPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81418CD029100091E7D /* FICDPhoto.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,10 @@
 		43E5D80A18CCFA9400091E7D /* BPSDWebImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPSDWebImageViewController.m; sourceTree = "<group>"; };
 		43E5D80C18CCFB0200091E7D /* BPImagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPImagesTableViewController.h; sourceTree = "<group>"; };
 		43E5D80D18CCFB0200091E7D /* BPImagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPImagesTableViewController.m; sourceTree = "<group>"; };
+		43E5D81018CD014500091E7D /* BPFastImageCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFastImageCacheViewController.h; sourceTree = "<group>"; };
+		43E5D81118CD014500091E7D /* BPFastImageCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFastImageCacheViewController.m; sourceTree = "<group>"; };
+		43E5D81318CD029100091E7D /* FICDPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICDPhoto.h; sourceTree = "<group>"; };
+		43E5D81418CD029100091E7D /* FICDPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICDPhoto.m; sourceTree = "<group>"; };
 		7DF61607AD5D47F1B41C966F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B104E612267F4AA481421A00 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +142,7 @@
 				43E5D80018CCF8C400091E7D /* FICD */,
 				43E5D80418CCF8CB00091E7D /* NoCache */,
 				43E5D80818CCFA8300091E7D /* SDWebImage */,
+				43E5D80F18CD013000091E7D /* FastImageCache */,
 				4371F10818CC4CFE00D90E35 /* Supporting Files */,
 			);
 			path = ImageCachingTest;
@@ -188,6 +195,8 @@
 		43E5D80018CCF8C400091E7D /* FICD */ = {
 			isa = PBXGroup;
 			children = (
+				43E5D81318CD029100091E7D /* FICDPhoto.h */,
+				43E5D81418CD029100091E7D /* FICDPhoto.m */,
 				43E5D80118CCF8C400091E7D /* FICDTableView.h */,
 				43E5D80218CCF8C400091E7D /* FICDTableView.m */,
 			);
@@ -210,6 +219,15 @@
 				43E5D80A18CCFA9400091E7D /* BPSDWebImageViewController.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		43E5D80F18CD013000091E7D /* FastImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				43E5D81018CD014500091E7D /* BPFastImageCacheViewController.h */,
+				43E5D81118CD014500091E7D /* BPFastImageCacheViewController.m */,
+			);
+			path = FastImageCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,8 +368,10 @@
 				43E5D7FF18CCF8BF00091E7D /* BPViewController.m in Sources */,
 				4371F10E18CC4CFE00D90E35 /* main.m in Sources */,
 				43E5D80B18CCFA9400091E7D /* BPSDWebImageViewController.m in Sources */,
+				43E5D81518CD029100091E7D /* FICDPhoto.m in Sources */,
 				43E5D80318CCF8C400091E7D /* FICDTableView.m in Sources */,
 				43E5D80E18CCFB0200091E7D /* BPImagesTableViewController.m in Sources */,
+				43E5D81218CD014500091E7D /* BPFastImageCacheViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
