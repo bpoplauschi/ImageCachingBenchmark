@@ -1,5 +1,5 @@
 //
-//  BPNoCacheViewController.h
+//  BPImagesTableViewController.h
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,9 +21,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import "BPImagesTableViewController.h"
+
+@class FICDTableView;
+
+extern NSString *kBPCellID;
 
 
-@interface BPNoCacheViewController : BPImagesTableViewController
+@interface BPImagesTableViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) FICDTableView *tableView;
+
+- (NSURL*)imageUrlForIndexPath:(NSIndexPath *)inIndexPath;
 
 @end

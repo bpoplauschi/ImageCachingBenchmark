@@ -23,19 +23,12 @@
 
 #import "BPNoCacheViewController.h"
 #import "BPTableViewCell.h"
-#import <Masonry.h>
-#import "FICDTableView.h"
-
-
-static NSString *kBPCellID = @"nocacheCellID";
 
 static CGFloat totalRetrieveTime = 0.0f;
 static NSInteger numberOfRetrieves = 0;
 
 
-@interface BPNoCacheViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, strong) FICDTableView *tableView;
+@interface BPNoCacheViewController ()
 
 @end
 
@@ -45,52 +38,19 @@ static NSInteger numberOfRetrieves = 0;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.title = @"No cache";
-        
-        [self setupTableView];
     }
     
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)setupTableView {
-    self.tableView = [[FICDTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-    
-    [self.tableView registerClass:[BPTableViewCell class] forCellReuseIdentifier:kBPCellID];
-    
-    self.tableView.backgroundView = nil;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.view addSubview:self.tableView];
-    
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.view.mas_width);
-        make.height.equalTo(self.view.mas_height);
-        make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.view.mas_left);
-    }];
-    
-    self.tableView.backgroundColor = [UIColor whiteColor];
-}
-
 #pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     BPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBPCellID];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%d %d", indexPath.section, indexPath.row];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03d.jpg", indexPath.row]];
+    NSURL *url = [self imageUrlForIndexPath:indexPath];
     cell.imageUrl = url;
     cell.customImageView.image = nil;
     
@@ -116,11 +76,6 @@ static NSInteger numberOfRetrieves = 0;
     });
     
     return cell;
-}
-
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70.0;
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  BPViewController.m
+//  BPImagesTableViewController.m
 //
 //  Copyright (c) 2014 Bogdan Poplauschi
 //
@@ -21,44 +21,46 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import "BPViewController.h"
+#import "BPImagesTableViewController.h"
+#import "FICDTableView.h"
+#import "BPTableViewCell.h"
 #import <Masonry.h>
-#import "BPNoCacheViewController.h"
 
 
-@interface BPViewController () <UITableViewDataSource, UITableViewDelegate>
+NSString *kBPCellID = @"cellID";
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray *controllers;
+
+@interface BPImagesTableViewController ()
 
 @end
 
 
-@implementation BPViewController
+@implementation BPImagesTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
         [self setupTableView];
-        
-        BPNoCacheViewController *noCacheVC = [[BPNoCacheViewController alloc] init];
-        
-        self.controllers = @[noCacheVC];
-        
-        self.title = @"Menu";
     }
-    
     return self;
+}
+
+- (NSURL*)imageUrlForIndexPath:(NSIndexPath *)inIndexPath {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03d.jpg", inIndexPath.row]];
+    
+    return url;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+	// Do any additional setup after loading the view.
 }
 
 - (void)setupTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    self.tableView = [[FICDTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    
+    [self.tableView registerClass:[BPTableViewCell class] forCellReuseIdentifier:kBPCellID];
     
     self.tableView.backgroundView = nil;
     self.tableView.delegate = self;
@@ -78,44 +80,22 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.controllers count];
+    return 100;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBPCellID];
+    BPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBPCellID];
     
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kBPCellID];
-    }
-    
-    UIViewController *controller = nil;
-    if (indexPath.row < self.controllers.count) {
-        controller = self.controllers[indexPath.row];
-    }
-    
-    NSString *className = NSStringFromClass([controller class]);
-    
-    if ([className hasPrefix:@"BP"]) {
-        className = [className stringByReplacingCharactersInRange:NSMakeRange(0, 2) withString:@""];
-    }
-    
-    if ([className hasSuffix:@"ViewController"]) {
-        className = [className stringByReplacingOccurrencesOfString:@"ViewController" withString:@""];
-    }
-    
-    cell.textLabel.text = className;
+    cell.textLabel.text = [NSString stringWithFormat:@"%d %d", indexPath.section, indexPath.row];
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < self.controllers.count) {
-        UIViewController *controller = self.controllers[indexPath.row];
-        [self.navigationController pushViewController:controller animated:YES];
-    }
-    [tableView cellForRowAtIndexPath:indexPath].selected = NO;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70.0;
 }
+
+
 
 @end
