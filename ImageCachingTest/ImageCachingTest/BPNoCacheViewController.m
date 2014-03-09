@@ -24,13 +24,15 @@
 #import "BPNoCacheViewController.h"
 #import "BPTableViewCell.h"
 #import <Masonry.h>
+#import "FICDTableView.h"
+
 
 static NSString *kBPCellID = @"nocacheCellID";
 
 
 @interface BPNoCacheViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) FICDTableView *tableView;
 
 @end
 
@@ -55,7 +57,7 @@ static NSString *kBPCellID = @"nocacheCellID";
 }
 
 - (void)setupTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    self.tableView = [[FICDTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     
     [self.tableView registerClass:[BPTableViewCell class] forCellReuseIdentifier:kBPCellID];
     
