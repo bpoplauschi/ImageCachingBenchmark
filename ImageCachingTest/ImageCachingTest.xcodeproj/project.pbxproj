@@ -29,6 +29,7 @@
 		43E5D81218CD014500091E7D /* BPFastImageCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81118CD014500091E7D /* BPFastImageCacheViewController.m */; };
 		43E5D81518CD029100091E7D /* FICDPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81418CD029100091E7D /* FICDPhoto.m */; };
 		43E5D81918CD0A0800091E7D /* BPAFNetworkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81818CD0A0800091E7D /* BPAFNetworkingViewController.m */; };
+		43E5D81C18CD107C00091E7D /* BPFullScreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		43E5D81418CD029100091E7D /* FICDPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICDPhoto.m; sourceTree = "<group>"; };
 		43E5D81718CD0A0800091E7D /* BPAFNetworkingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAFNetworkingViewController.h; sourceTree = "<group>"; };
 		43E5D81818CD0A0800091E7D /* BPAFNetworkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAFNetworkingViewController.m; sourceTree = "<group>"; };
+		43E5D81A18CD107C00091E7D /* BPFullScreenImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPFullScreenImageViewController.h; sourceTree = "<group>"; };
+		43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFullScreenImageViewController.m; sourceTree = "<group>"; };
 		7DF61607AD5D47F1B41C966F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B104E612267F4AA481421A00 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +195,8 @@
 				43E5D7FC18CCF8BF00091E7D /* BPViewController.m */,
 				43E5D80C18CCFB0200091E7D /* BPImagesTableViewController.h */,
 				43E5D80D18CCFB0200091E7D /* BPImagesTableViewController.m */,
+				43E5D81A18CD107C00091E7D /* BPFullScreenImageViewController.h */,
+				43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				43E5D80B18CCFA9400091E7D /* BPSDWebImageViewController.m in Sources */,
 				43E5D81518CD029100091E7D /* FICDPhoto.m in Sources */,
 				43E5D80318CCF8C400091E7D /* FICDTableView.m in Sources */,
+				43E5D81C18CD107C00091E7D /* BPFullScreenImageViewController.m in Sources */,
 				43E5D80E18CCFB0200091E7D /* BPImagesTableViewController.m in Sources */,
 				43E5D81218CD014500091E7D /* BPFastImageCacheViewController.m in Sources */,
 			);

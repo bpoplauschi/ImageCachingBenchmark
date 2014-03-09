@@ -24,6 +24,7 @@
 #import "BPImagesTableViewController.h"
 #import "FICDTableView.h"
 #import <Masonry.h>
+#import "BPFullScreenImageViewController.h"
 
 
 NSString *kBPCellID = @"cellID";
@@ -95,6 +96,13 @@ NSString *kBPCellID = @"cellID";
     return 70.0;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BPTableViewCell *cell = (BPTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    if (cell.customImageView.image) {
+        BPFullScreenImageViewController *fullScreenImageVC = [[BPFullScreenImageViewController alloc] initWithImage:cell.customImageView.image];
+        [self.navigationController pushViewController:fullScreenImageVC animated:YES];
+    }
+    cell.selected = NO;
+}
 
 @end
