@@ -28,7 +28,9 @@
 static NSString *kBPCellID = @"nocacheCellID";
 
 
-@interface BPNoCacheViewController ()
+@interface BPNoCacheViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 

@@ -29,8 +29,9 @@
 static NSString *kBPCellID = @"cellID";
 
 
-@interface BPViewController ()
+@interface BPViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *controllers;
 
 @end

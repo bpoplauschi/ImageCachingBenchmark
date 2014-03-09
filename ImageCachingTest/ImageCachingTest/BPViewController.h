@@ -21,13 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import <UIKit/UIKit.h>
 
-@interface BPViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
-/**
- *  The table view
- */
-@property (nonatomic, strong) UITableView *tableView;
+@interface BPViewController : UIViewController
 
 @end
