@@ -58,10 +58,7 @@ static NSInteger numberOfRetrievesFromWeb       = 0;
     NSURL *url = [self imageUrlForIndexPath:indexPath];
     cell.imageUrl = url;
     cell.customImageView.image = nil;
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
-    
+        
     NSDate *initialDate = [NSDate date];
     __weak typeof(cell)weakCell = cell;
     
