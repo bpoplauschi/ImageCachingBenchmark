@@ -1,4 +1,16 @@
 PODS:
+  - AFNetworking/NSURLConnection (2.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.0):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.0)
+  - AFNetworking/Security (2.2.0)
+  - AFNetworking/Serialization (2.2.0)
+  - AFNetworking/UIKit (2.2.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - FastImageCache (1.2)
   - Masonry (0.4.0)
   - SDWebImage (3.5.2):
@@ -6,11 +18,13 @@ PODS:
   - SDWebImage/Core (3.5.2)
 
 DEPENDENCIES:
+  - AFNetworking/UIKit
   - FastImageCache
   - Masonry (~> 0.4.0)
   - SDWebImage
 
 SPEC CHECKSUMS:
+  AFNetworking: e8cfd8f3fe3bfe19124a0cc63f4d45752d892a56
   FastImageCache: 3e0a72dd96394bb36759dab9764b219934fa7ea4
   Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
   SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e

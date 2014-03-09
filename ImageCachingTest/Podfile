@@ -4,3 +4,4 @@ pod 'Masonry', '~> 0.4.0'
 
 pod 'SDWebImage'
 pod 'FastImageCache'
+pod 'AFNetworking/UIKit'
