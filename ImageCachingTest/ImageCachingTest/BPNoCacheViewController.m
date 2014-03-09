@@ -29,6 +29,9 @@
 
 static NSString *kBPCellID = @"nocacheCellID";
 
+static CGFloat totalRetrieveTime = 0.0f;
+static NSInteger numberOfRetrieves = 0;
+
 
 @interface BPNoCacheViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -94,12 +97,20 @@ static NSString *kBPCellID = @"nocacheCellID";
     __weak typeof(cell)weakCell = cell;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Fetch the desired source image by making a network request
+        NSDate *initialDate = [NSDate date];
         UIImage *sourceImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             __strong __typeof(weakCell)strongCell = weakCell;
             if ([strongCell.imageUrl isEqual:url]) {
                 strongCell.customImageView.image = sourceImage;
+                
+                CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
+                
+                numberOfRetrieves ++;
+                totalRetrieveTime += retrieveTime;
+                
+                NSLog(@"retrieved image in %.2f seconds. Average is %.2f", retrieveTime, totalRetrieveTime/numberOfRetrieves);
             }
         });
     });
