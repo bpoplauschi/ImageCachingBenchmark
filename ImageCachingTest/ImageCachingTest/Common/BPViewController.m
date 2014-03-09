@@ -24,6 +24,7 @@
 #import "BPViewController.h"
 #import <Masonry.h>
 #import "BPNoCacheViewController.h"
+#import "BPSDWebImageViewController.h"
 
 
 @interface BPViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -41,8 +42,9 @@
         [self setupTableView];
         
         BPNoCacheViewController *noCacheVC = [[BPNoCacheViewController alloc] init];
+        BPSDWebImageViewController *sdWebImageVC = [[BPSDWebImageViewController alloc] init];
         
-        self.controllers = @[noCacheVC];
+        self.controllers = @[noCacheVC, sdWebImageVC];
         
         self.title = @"Menu";
     }

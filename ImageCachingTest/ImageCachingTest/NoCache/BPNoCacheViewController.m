@@ -70,7 +70,7 @@ static NSInteger numberOfRetrieves = 0;
                 numberOfRetrieves ++;
                 totalRetrieveTime += retrieveTime;
                 
-                NSLog(@"retrieved image in %.2f seconds. Average is %.2f", retrieveTime, totalRetrieveTime/numberOfRetrieves);
+                NSLog(@"[NO CACHE] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTime/numberOfRetrieves);
             }
         });
     });
