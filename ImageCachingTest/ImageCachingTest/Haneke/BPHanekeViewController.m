@@ -22,7 +22,7 @@
 //  SOFTWARE.
 
 #import "BPHanekeViewController.h"
-//#import <UIImageView+Haneke.h>
+#import <UIImageView+Haneke.h>
 
 
 @implementation BPHanekeViewController
@@ -43,35 +43,35 @@
     BPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBPCellID];
 
     cell.textLabel.text = [NSString stringWithFormat:@"%d %d", indexPath.section, indexPath.row];
-//    NSURL *url = [self imageUrlForIndexPath:indexPath];
-//    cell.imageUrl = url;
-//    cell.customImageView.image = nil;
-//    
-//    NSDate *initialDate = [NSDate date];
-//    __weak typeof(cell)weakCell = cell;
-//    
-//    [cell.customImageView hnk_setImageFromURL:url completion:^(UIImage *inImage, HNKCacheType cacheType) {
-//        __strong __typeof(weakCell)strongCell = weakCell;
-//        if ([strongCell.imageUrl isEqual:url]) {
-//            strongCell.customImageView.image = inImage;
-//            
-//            CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
-//            
-//            switch (cacheType) {
-//                case HNKCacheTypeNone:
-//                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
-//                    break;
-//                case HNKCacheTypeDisk:
-//                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeDisk];
-//                    break;
-//                case HNKCacheTypeMemory:
-//                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-//    }];
+    NSURL *url = [self imageUrlForIndexPath:indexPath];
+    cell.imageUrl = url;
+    cell.customImageView.image = nil;
+    
+    NSDate *initialDate = [NSDate date];
+    __weak typeof(cell)weakCell = cell;
+    
+    [cell.customImageView hnk_setImageFromURL:url completion:^(UIImage *inImage, HNKCacheType cacheType) {
+        __strong __typeof(weakCell)strongCell = weakCell;
+        if ([strongCell.imageUrl isEqual:url]) {
+            strongCell.customImageView.image = inImage;
+            
+            CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
+            
+            switch (cacheType) {
+                case HNKCacheTypeNone:
+                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
+                    break;
+                case HNKCacheTypeDisk:
+                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeDisk];
+                    break;
+                case HNKCacheTypeMemory:
+                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
+                    break;
+                default:
+                    break;
+            }
+        }
+    }];
     
     return cell;
 }
