@@ -20,6 +20,8 @@
 }
 
 @property (nonatomic, assign, readwrite) CGFloat averageFPS;
+@property (nonatomic, assign) CGFloat minFPS;
+@property (nonatomic, assign) CGFloat maxFPS;
 
 @end
 
@@ -30,6 +32,13 @@
 @synthesize averageFPS = _averageFPS;
 
 #pragma mark - Object Lifecycle
+
+- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
+    if (self = [super initWithFrame:frame style:style]) {
+        self.minFPS = CGFLOAT_MAX;
+    }
+    return self;
+}
 
 - (void)dealloc {
     [_displayLink invalidate];
@@ -92,6 +101,14 @@
         CGFloat averageFPS = (CGFloat)(_totalFrames / _scrollingTime);
         [self setAverageFPS:averageFPS];
         
+        if (lastFPS < self.minFPS) {
+            self.minFPS = lastFPS;
+        }
+        
+        if (lastFPS > self.maxFPS) {
+            self.maxFPS = lastFPS;
+        }
+        
         static dispatch_queue_t __dispatchQueue = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -101,7 +118,7 @@
         // We don't want the logging of scrolling performance to be able to impact the scrolling performance,
         // so move both the logging and the string formatting onto a GCD serial queue.
         dispatch_async(__dispatchQueue, ^{
-            NSLog(@"*** FIC Demo: Last FPS = %d, Average FPS = %.2f", lastFPS, averageFPS);
+            NSLog(@"* FPS = %d, Average FPS = %.4f, min FPS = %.4f, max FPS = %.4f", lastFPS, averageFPS, self.minFPS, self.maxFPS);
         });
         
         _framesInLastInterval = 0;
