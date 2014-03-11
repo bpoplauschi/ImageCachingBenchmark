@@ -23,14 +23,6 @@
 
 #import "BPNoCacheViewController.h"
 
-static CGFloat totalRetrieveTime = 0.0f;
-static NSInteger numberOfRetrieves = 0;
-
-
-@interface BPNoCacheViewController ()
-
-@end
-
 
 @implementation BPNoCacheViewController
 
@@ -65,11 +57,7 @@ static NSInteger numberOfRetrieves = 0;
                 strongCell.customImageView.image = sourceImage;
                 
                 CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
-                
-                numberOfRetrieves ++;
-                totalRetrieveTime += retrieveTime;
-                
-                NSLog(@"[NO CACHE] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTime/numberOfRetrieves);
+                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
             }
         });
     });

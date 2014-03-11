@@ -29,6 +29,10 @@
 
 NSString *kBPCellID = @"cellID";
 
+CGFloat totalRetrieveDuration[3];
+CGFloat minRetrieveDuration[3];
+CGFloat maxRetrieveDuration[3];
+int     numberOfRetrieves[3];
 
 @interface BPImagesTableViewController ()
 
@@ -42,6 +46,22 @@ NSString *kBPCellID = @"cellID";
     if (self) {
         // Custom initialization
         [self setupTableView];
+        
+        totalRetrieveDuration[0] = 0;
+        totalRetrieveDuration[1] = 0;
+        totalRetrieveDuration[2] = 0;
+        
+        minRetrieveDuration[0] = 0;
+        minRetrieveDuration[1] = 0;
+        minRetrieveDuration[2] = 0;
+        
+        maxRetrieveDuration[0] = 0;
+        maxRetrieveDuration[1] = 0;
+        maxRetrieveDuration[2] = 0;
+        
+        minRetrieveDuration[0] = UINT16_MAX;
+        minRetrieveDuration[1] = UINT16_MAX;
+        minRetrieveDuration[2] = UINT16_MAX;
     }
     return self;
 }
@@ -50,6 +70,40 @@ NSString *kBPCellID = @"cellID";
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03d.jpg", inIndexPath.row]];
     
     return url;
+}
+
+- (void)trackRetrieveDuration:(CGFloat)inDuration forCacheType:(BPCacheType)inCacheType {
+    numberOfRetrieves[inCacheType] ++;
+    totalRetrieveDuration[inCacheType] +=inDuration;
+    
+    if (inDuration < minRetrieveDuration[inCacheType]) {
+        minRetrieveDuration[inCacheType] = inDuration;
+    }
+    
+    if (inDuration > maxRetrieveDuration[inCacheType]) {
+        maxRetrieveDuration[inCacheType] = inDuration;
+    }
+    
+    NSString *cacheTypeString = nil;
+    switch (inCacheType) {
+        case BPCacheTypeNone:
+            cacheTypeString = @"Web";
+            break;
+        case BPCacheTypeMemory:
+            cacheTypeString = @"Memory";
+            break;
+        case BPCacheTypeDisk:
+            cacheTypeString = @"Disk";
+            break;
+    }
+    
+    NSLog(@"[%@][%@] retrieved in %.4f, average %.4f, min %.4f, max %.4f",
+          self.title,
+          cacheTypeString,
+          inDuration,
+          totalRetrieveDuration[inCacheType] / numberOfRetrieves[inCacheType],
+          minRetrieveDuration[inCacheType],
+          maxRetrieveDuration[inCacheType]);
 }
 
 - (void)viewDidLoad {

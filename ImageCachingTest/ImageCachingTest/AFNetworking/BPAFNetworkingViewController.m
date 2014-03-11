@@ -25,17 +25,6 @@
 #import <UIImageView+AFNetworking.h>
 
 
-static CGFloat totalRetrieveTimeFromWeb        = 0.0f;
-static NSInteger numberOfRetrievesFromWeb      = 0;
-
-static CGFloat totalRetrieveTimeFromCache      = 0.0f;
-static NSInteger numberOfRetrievesFromCache    = 0;
-
-
-@interface BPAFNetworkingViewController ()
-
-@end
-
 @implementation BPAFNetworkingViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -74,15 +63,9 @@ static NSInteger numberOfRetrievesFromCache    = 0;
                                                  CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
                                                  
                                                  if (!request && !response) {
-                                                     // cache
-                                                     numberOfRetrievesFromCache ++;
-                                                     totalRetrieveTimeFromCache += retrieveTime;
-                                                     NSLog(@"[AFNetworking][Disk Cache] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromCache/numberOfRetrievesFromCache);
+                                                     [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
                                                  } else {
-                                                     // web
-                                                     numberOfRetrievesFromWeb ++;
-                                                     totalRetrieveTimeFromWeb += retrieveTime;
-                                                     NSLog(@"[AFNetworking][Web] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromWeb/numberOfRetrievesFromWeb);
+                                                     [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
                                                  }
                                              }
                                          }

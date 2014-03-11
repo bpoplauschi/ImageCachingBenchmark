@@ -24,18 +24,6 @@
 #import "BPTMCacheViewController.h"
 #import <TMCache.h>
 
-static CGFloat totalRetrieveTimeFromDisk        = 0.0f;
-static NSInteger numberOfRetrievesFromDisk      = 0;
-
-static CGFloat totalRetrieveTimeFromMemory      = 0.0f;
-static NSInteger numberOfRetrievesFromMemory    = 0;
-
-static CGFloat totalRetrieveTimeFromWeb         = 0.0f;
-static NSInteger numberOfRetrievesFromWeb       = 0;
-
-@interface BPTMCacheViewController ()
-
-@end
 
 @implementation BPTMCacheViewController
 
@@ -73,14 +61,10 @@ static NSInteger numberOfRetrievesFromWeb       = 0;
                     CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
                     switch (cacheType) {
                         case TMCacheTypeDisk:
-                            numberOfRetrievesFromDisk ++;
-                            totalRetrieveTimeFromDisk += retrieveTime;
-                            NSLog(@"[TMCache][Disk Cache] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromDisk/numberOfRetrievesFromDisk);
+                            [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeDisk];
                             break;
                         case TMCacheTypeMemory:
-                            numberOfRetrievesFromMemory ++;
-                            totalRetrieveTimeFromMemory += retrieveTime;
-                            NSLog(@"[TMCache][Memory Cache] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromMemory/numberOfRetrievesFromMemory);
+                            [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
                             break;
                         default:
                             break;
@@ -102,9 +86,7 @@ static NSInteger numberOfRetrievesFromWeb       = 0;
                 strongCell.customImageView.image = image;
                 
                 CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
-                numberOfRetrievesFromWeb ++;
-                totalRetrieveTimeFromWeb += retrieveTime;
-                NSLog(@"[TMCache][Web] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromWeb/numberOfRetrievesFromWeb);
+                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
             }
         });
         

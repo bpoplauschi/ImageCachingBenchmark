@@ -28,9 +28,17 @@
 extern NSString *kBPCellID;
 
 
+typedef NS_ENUM(NSInteger, BPCacheType) {
+    BPCacheTypeNone = 0,
+    BPCacheTypeMemory,
+    BPCacheTypeDisk
+};
+
 @interface BPImagesTableViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) FICDTableView *tableView;
+
+- (void)trackRetrieveDuration:(CGFloat)inDuration forCacheType:(BPCacheType)inCacheType;
 
 - (NSURL*)imageUrlForIndexPath:(NSIndexPath *)inIndexPath;
 

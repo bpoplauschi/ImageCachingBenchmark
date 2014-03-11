@@ -25,20 +25,6 @@
 #import <UIImageView+WebCache.h>
 
 
-static CGFloat totalRetrieveTimeFromDisk        = 0.0f;
-static NSInteger numberOfRetrievesFromDisk      = 0;
-
-static CGFloat totalRetrieveTimeFromMemory      = 0.0f;
-static NSInteger numberOfRetrievesFromMemory    = 0;
-
-static CGFloat totalRetrieveTimeFromWeb         = 0.0f;
-static NSInteger numberOfRetrievesFromWeb       = 0;
-
-@interface BPSDWebImageViewController ()
-
-@end
-
-
 @implementation BPSDWebImageViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -67,19 +53,13 @@ static NSInteger numberOfRetrievesFromWeb       = 0;
         
         switch (cacheType) {
             case SDImageCacheTypeNone:
-                numberOfRetrievesFromWeb ++;
-                totalRetrieveTimeFromWeb += retrieveTime;
-                NSLog(@"[SDWebImage][Web] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromWeb/numberOfRetrievesFromWeb);
+                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
                 break;
             case SDImageCacheTypeDisk:
-                numberOfRetrievesFromDisk ++;
-                totalRetrieveTimeFromDisk += retrieveTime;
-                NSLog(@"[SDWebImage][Disk Cache] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromDisk/numberOfRetrievesFromDisk);
+                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeDisk];
                 break;
             case SDImageCacheTypeMemory:
-                numberOfRetrievesFromMemory ++;
-                totalRetrieveTimeFromMemory += retrieveTime;
-                NSLog(@"[SDWebImage][Memory Cache] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromMemory/numberOfRetrievesFromMemory);
+                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
                 break;
             default:
                 break;

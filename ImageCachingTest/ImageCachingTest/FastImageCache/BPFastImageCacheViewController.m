@@ -26,18 +26,6 @@
 #import <FICImageCache.h>
 
 
-static CGFloat totalRetrieveTimeFromWeb        = 0.0f;
-static NSInteger numberOfRetrievesFromWeb      = 0;
-
-static CGFloat totalRetrieveTimeFromCache      = 0.0f;
-static NSInteger numberOfRetrievesFromCache    = 0;
-
-
-@interface BPFastImageCacheViewController ()
-
-@end
-
-
 @implementation BPFastImageCacheViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -73,14 +61,10 @@ static NSInteger numberOfRetrievesFromCache    = 0;
             
             switch (cacheType) {
                 case FICCacheTypeNone:
-                    numberOfRetrievesFromWeb ++;
-                    totalRetrieveTimeFromWeb += retrieveTime;
-                    NSLog(@"[FastImageCache][Web] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromWeb/numberOfRetrievesFromWeb);
+                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
                     break;
                 case FICCacheTypeCache:
-                    numberOfRetrievesFromCache ++;
-                    totalRetrieveTimeFromCache += retrieveTime;
-                    NSLog(@"[FastImageCache][Disk Cache] - retrieved image in %.4f seconds. Average is %.4f", retrieveTime, totalRetrieveTimeFromCache/numberOfRetrievesFromCache);
+                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
                     break;
                 default:
                     break;
