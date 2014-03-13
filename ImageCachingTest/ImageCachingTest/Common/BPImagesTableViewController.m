@@ -45,7 +45,6 @@ int     numberOfRetrieves[3];
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self setupTableView];
         
         totalRetrieveDuration[0] = 0;
         totalRetrieveDuration[1] = 0;
@@ -109,6 +108,8 @@ int     numberOfRetrieves[3];
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self setupTableView];
 }
 
 - (void)setupTableView {

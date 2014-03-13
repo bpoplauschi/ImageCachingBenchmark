@@ -43,8 +43,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        [self setupTableView];
-        
         BPNoCacheViewController *noCacheVC = [BPNoCacheViewController new];
         BPSDWebImageViewController *sdWebImageVC = [BPSDWebImageViewController new];
         BPFastImageCacheViewController *fastImageCacheVC = [BPFastImageCacheViewController new];
@@ -65,6 +63,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setupTableView];
 }
 
 - (void)setupTableView {

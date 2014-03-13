@@ -27,6 +27,7 @@
 
 @interface BPFullScreenImageViewController ()
 
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImageView *imageView;
 
 @end
@@ -38,15 +39,7 @@
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         // Custom initialization
-        
-        self.imageView = [[UIImageView alloc] initWithImage:inImage];
-        self.imageView.clipsToBounds = YES;
-        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.view addSubview:self.imageView];
-        
-        [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.view);
-        }];
+        self.image = inImage;
     }
     return self;
 }
@@ -54,6 +47,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.imageView = [[UIImageView alloc] initWithImage:self.image];
+    self.imageView.clipsToBounds = YES;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:self.imageView];
+    
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
 }
 
 @end
