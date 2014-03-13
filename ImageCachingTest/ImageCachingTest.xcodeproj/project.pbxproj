@@ -31,7 +31,6 @@
 		43E5D81918CD0A0800091E7D /* BPAFNetworkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81818CD0A0800091E7D /* BPAFNetworkingViewController.m */; };
 		43E5D81C18CD107C00091E7D /* BPFullScreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */; };
 		43E5D82018CD19AE00091E7D /* BPTMCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */; };
-		43E5D82418CD1F2500091E7D /* BPHanekeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D82318CD1F2500091E7D /* BPHanekeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,8 +82,6 @@
 		43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPFullScreenImageViewController.m; sourceTree = "<group>"; };
 		43E5D81E18CD19AE00091E7D /* BPTMCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTMCacheViewController.h; sourceTree = "<group>"; };
 		43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTMCacheViewController.m; sourceTree = "<group>"; };
-		43E5D82218CD1F2500091E7D /* BPHanekeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHanekeViewController.h; sourceTree = "<group>"; };
-		43E5D82318CD1F2500091E7D /* BPHanekeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPHanekeViewController.m; sourceTree = "<group>"; };
 		7DF61607AD5D47F1B41C966F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B104E612267F4AA481421A00 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,7 +154,6 @@
 				43E5D80F18CD013000091E7D /* FastImageCache */,
 				43E5D81618CD09CB00091E7D /* AFNetworking */,
 				43E5D81D18CD199D00091E7D /* TMCache */,
-				43E5D82118CD1F1B00091E7D /* Haneke */,
 				4371F10818CC4CFE00D90E35 /* Supporting Files */,
 			);
 			path = ImageCachingTest;
@@ -263,15 +259,6 @@
 				43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */,
 			);
 			path = TMCache;
-			sourceTree = "<group>";
-		};
-		43E5D82118CD1F1B00091E7D /* Haneke */ = {
-			isa = PBXGroup;
-			children = (
-				43E5D82218CD1F2500091E7D /* BPHanekeViewController.h */,
-				43E5D82318CD1F2500091E7D /* BPHanekeViewController.m */,
-			);
-			path = Haneke;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,7 +393,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43E5D82418CD1F2500091E7D /* BPHanekeViewController.m in Sources */,
 				43E5D7FE18CCF8BF00091E7D /* BPTableViewCell.m in Sources */,
 				43E5D7FD18CCF8BF00091E7D /* BPAppDelegate.m in Sources */,
 				43E5D80718CCF8CB00091E7D /* BPNoCacheViewController.m in Sources */,

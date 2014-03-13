@@ -12,7 +12,6 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - FastImageCache (1.2)
-  - Haneke (0.0.4)
   - Masonry (0.4.0)
   - SDWebImage (3.5.4):
     - SDWebImage/Core
@@ -22,7 +21,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking/UIKit
   - FastImageCache
-  - Haneke
   - Masonry (~> 0.4.0)
   - SDWebImage
   - TMCache
@@ -30,7 +28,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: e8cfd8f3fe3bfe19124a0cc63f4d45752d892a56
   FastImageCache: 3e0a72dd96394bb36759dab9764b219934fa7ea4
-  Haneke: 6bcc4a20888dbe42717f94f1efb09d906ddc735d
   Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
   SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
   TMCache: 4b05e1b124d9f7e8d449640e059cff4cda17ed27

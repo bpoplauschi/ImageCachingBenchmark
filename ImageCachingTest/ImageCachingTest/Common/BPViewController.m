@@ -28,7 +28,6 @@
 #import "BPFastImageCacheViewController.h"
 #import "BPAFNetworkingViewController.h"
 #import "BPTMCacheViewController.h"
-#import "BPHanekeViewController.h"
 
 
 @interface BPViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -50,9 +49,8 @@
         BPFastImageCacheViewController *fastImageCacheVC = [BPFastImageCacheViewController new];
         BPAFNetworkingViewController *afNetworkingVC = [BPAFNetworkingViewController new];
         BPTMCacheViewController *tmCacheVC = [BPTMCacheViewController new];
-        BPHanekeViewController *hanekeVC = [BPHanekeViewController new];
         
-        self.controllers = @[noCacheVC, sdWebImageVC, fastImageCacheVC, afNetworkingVC, tmCacheVC, hanekeVC];
+        self.controllers = @[noCacheVC, sdWebImageVC, fastImageCacheVC, afNetworkingVC, tmCacheVC];
         
         self.title = @"Menu";
     }
