@@ -118,7 +118,7 @@
         // We don't want the logging of scrolling performance to be able to impact the scrolling performance,
         // so move both the logging and the string formatting onto a GCD serial queue.
         dispatch_async(__dispatchQueue, ^{
-            NSLog(@"* FPS = %d, Average FPS = %.4f, min FPS = %.4f, max FPS = %.4f", lastFPS, averageFPS, self.minFPS, self.maxFPS);
+            NSLog(@"* FPS = %ld, Average FPS = %.4f, min FPS = %.4f, max FPS = %.4f", (long)lastFPS, averageFPS, self.minFPS, self.maxFPS);
         });
         
         _framesInLastInterval = 0;

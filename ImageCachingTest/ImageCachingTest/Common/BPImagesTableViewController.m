@@ -66,7 +66,7 @@ int     numberOfRetrieves[3];
 }
 
 - (NSURL*)imageUrlForIndexPath:(NSIndexPath *)inIndexPath {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03d.jpg", inIndexPath.row]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03ld.jpg", (long)inIndexPath.row]];
     
     return url;
 }
@@ -141,7 +141,7 @@ int     numberOfRetrieves[3];
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBPCellID];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%d %d", indexPath.section, indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld %ld", (long)indexPath.section, (long)indexPath.row];
     
     return cell;
 }
