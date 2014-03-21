@@ -8,7 +8,7 @@ In the past years, iOS apps have become more and more visually appealing. Displa
 
 To achieve a great user experience, it’s important to understand what is going on under the iOS hood when we cache and load images.
 
-Also, the benchmarks on the most used image caching open source libraries can be of great help when choosing you solution.
+Also, the benchmarks on the most used image caching open source libraries can be of great help when choosing your solution.
 
 ## Classical approach
 
@@ -76,7 +76,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 - [TMCache](https://github.com/tumblr/TMCache)
 - [Haneke](https://github.com/hpique/Haneke)
 
-*Note: AFNetworking was added to the comparison since starting with iOS7, due to NSURLCache, AFNetworking benefits of disk caching.*
+*Note: AFNetworking was added to the comparison because it benefits of disk caching from iOS 7 (due to NSURLCache).*
 
 #### Scenario:
 - for each library, I made a clean install of the benchmark app, then started the app, scroll easily while all images are loaded, then scroll back and forth with different intensities (from slow to fast). I closed the app to force loading from disk cache (where available), then run the same scrolling scenario.
