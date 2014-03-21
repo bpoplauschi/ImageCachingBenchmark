@@ -52,23 +52,14 @@
     
     NSDate *initialDate = [NSDate date];
     __weak typeof(cell)weakCell = cell;
-    [[FICImageCache sharedImageCache] asynchronouslyRetrieveImageForEntity:photo withFormatName:@"32BitBGR" completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image, FICCacheType cacheType) {
+    [[FICImageCache sharedImageCache] asynchronouslyRetrieveImageForEntity:photo withFormatName:@"32BitBGR" completionBlock:^(id<FICEntity> entity, NSString *formatName, UIImage *image) {
         __strong __typeof(weakCell)strongCell = weakCell;
         if ([strongCell.imageUrl isEqual:url]) {
             strongCell.customImageView.image = image;
             
             CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
             
-            switch (cacheType) {
-                case FICCacheTypeNone:
-                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
-                    break;
-                case FICCacheTypeCache:
-                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
-                    break;
-                default:
-                    break;
-            }
+            [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
         }
     }];
     

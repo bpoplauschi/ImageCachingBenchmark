@@ -50,7 +50,7 @@
     NSDate *initialDate = [NSDate date];
     __weak typeof(cell)weakCell = cell;
     
-    [[TMCache sharedCache] objectForKey:[url absoluteString] block:^(TMCache *cache, NSString *key, id object, TMCacheType cacheType) {
+    [[TMCache sharedCache] objectForKey:[url absoluteString] block:^(TMCache *cache, NSString *key, id object) {
         __strong typeof(weakCell)strongCell = weakCell;
         
         if (object) {
@@ -59,16 +59,7 @@
                     strongCell.customImageView.image = object;
                     
                     CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
-                    switch (cacheType) {
-                        case TMCacheTypeDisk:
-                            [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeDisk];
-                            break;
-                        case TMCacheTypeMemory:
-                            [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
-                            break;
-                        default:
-                            break;
-                    }
+                    [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
                 }
             });
             return;
