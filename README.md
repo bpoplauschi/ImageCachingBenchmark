@@ -90,25 +90,25 @@ Just looking at the concepts listed above makes it clear that writing such a com
 #### iPhone 5s results
 
 <p align="left" >
-  <img src="graphs/iPhone5s_mem.png" float=left width=400>
-  <img src="graphs/iPhone5s_disk.png" float=right width=400>
+  <img src="graphs/iPhone5s_mem.png" float=left width=350>
+  <img src="graphs/iPhone5s_disk.png" float=right width=350>
 </p>
 
 <p align="left" >
-  <img src="graphs/iPhone5s_cpu_mem.png" float=left width=400>
-  <img src="graphs/iPhone5s_FPS.png" float=right width=400>
+  <img src="graphs/iPhone5s_cpu_mem.png" float=left width=350>
+  <img src="graphs/iPhone5s_FPS.png" float=right width=350>
 </p>
 
 #### iPhone 4 results
 
 <p align="left" >
-  <img src="graphs/iPhone4_mem.png" float=left width=400>
-  <img src="graphs/iPhone4_disk.png" float=right width=400>
+  <img src="graphs/iPhone4_mem.png" float=left width=350>
+  <img src="graphs/iPhone4_disk.png" float=right width=350>
 </p>
 
 <p align="left" >
-  <img src="graphs/iPhone4_cpu_mem.png" float=left width=400>
-  <img src="graphs/iPhone4_FPS.png" float=right width=400>
+  <img src="graphs/iPhone4_cpu_mem.png" float=left width=350>
+  <img src="graphs/iPhone4_FPS.png" float=right width=350>
 </p>
 
 #### Summary
