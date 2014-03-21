@@ -1,7 +1,7 @@
 ImageCachingBenchmark
 =====================
 
-Benchmark tests for iOS image caching solutions
+Benchmark tests for iOS image caching solutions. Article available: http://bpoplauschi.wordpress.com/2014/03/21/ios-image-caching-sdwebimage-vs-fastimage/
 
 ## Introduction
 In the past years, iOS apps have become more and more visually appealing. Displaying images is a key part of that, that’s why most of them use images that need to be downloaded and rendered. Most developers have faced the need to populate table views or collection views with images. Downloading the images is resource consuming (cellular data, battery, CPU, …), so in order to minimize this the caching model appeared.
