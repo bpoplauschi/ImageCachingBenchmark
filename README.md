@@ -7,11 +7,6 @@ Benchmark tests for iOS image caching solutions
 - [see here](http://htmlpreview.github.io/?https://github.com/bpoplauschi/ImageCachingBenchmark/blob/master/tables/tables.html)
 
 ## Conclusions
-<html>
-<head>
-</head>
-
-<body>
 
 <table style="border:0px solid black; text-align:center; font-size:12px;">
 <tbody>
@@ -28,9 +23,9 @@ Benchmark tests for iOS image caching solutions
 <tr>
 <td>async download</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
 </tr>
 
@@ -38,18 +33,18 @@ Benchmark tests for iOS image caching solutions
 <td>backgr decompr</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
 </tr>
 
 <tr>
 <td>store decompr</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
 </tr>
 
 <tr>
@@ -82,45 +77,45 @@ Benchmark tests for iOS image caching solutions
 <tr>
 <td>easy to use</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
 </tr>
 
 <tr>
 <td>UIImageView categ</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
 </tr>
 
 <tr>
 <td>from memory</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
 </tr>
 
 <tr>
 <td>from disk</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
 </tr>
 
 <tr>
 <td>lowest CPU</td>
 <td>&#10003;</td>
-<td>X</td>
-<td>X</td>
-<td>X</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
 </tr>
 
@@ -128,8 +123,8 @@ Benchmark tests for iOS image caching solutions
 <td>lowest mem</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
-<td>X</td>
-<td>X</td>
+<td>&#10007;</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
 </tr>
 
@@ -139,14 +134,18 @@ Benchmark tests for iOS image caching solutions
 <td>&#10003;</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
-<td>X</td>
+<td>&#10007;</td>
 <td>&#10003;</td>
 </tr>
 
+<tr>
+<td>License</td>
+<td>MIT</td>
+<td>MIT</td>
+<td>MIT</td>
+<td>Apache</td>
+<td>Apache</td>
+</tr>
 
 </tbody>
 </table>
-
-</body>
-
-</html>
