@@ -61,7 +61,7 @@ if ([self hasImageDataForURL:imageUrl] {
 - **store** the **decompressed image** on disk and in memory to avoid redoing the decompression
 - use **GCD** and **blocks**. This makes the code more performant, easier to read and write. In nowadays, GCD and blocks is a must for async operations
 - *nice to have: category over UIImageView for trivial integration.*
-- *nice to have: ability to process the image after download and before storing it into the cache. At this point, only SDWebImage has this feature available. I won't include this in the evaluation since it's a limited usage feature.*
+- *nice to have: ability to process the image after download and before storing it into the cache.*
 
 #### Is Core Data a good candidate?
 
