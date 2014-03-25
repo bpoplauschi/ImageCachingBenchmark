@@ -43,7 +43,7 @@ if ([self hasImageDataForURL:imageUrl] {
 
 ## Downsides of the classical variant:
 
-- **loading images** or any file **from the disk is expensive** (disk access is usually from 10.000 to 1.000.000 times slower than memory access)
+- **loading images** or any file **from the disk is expensive** (disk access is usually from 10.000 to 1.000.000 times slower than memory access. See comparison [here](http://www.storagereview.com/introduction_ram_disks). If we refer to SSD disks, those can come closer to RAM speeds (like 10 times slower), but at this point no smartphone or tablet is equipped with an SSD unit).
 - creating the **UIImage instance** will result in a **compressed version of the image mapped to a memory section**. The compressed image is small and cannot be rendered. If loaded from disk, the image is not even loaded into memory. **Decompressing** an image is also **expensive**.
 - setting the image property of the imageView in this case will create a CATransaction that will be committed on the run loop. On the next run loop iteration, the **CATransaction** involves (depending on the images) creating a **copy** of any **images** which have been set as layer contents. Copying images includes:
   - **allocating buffers** for file IO and decompression
@@ -51,7 +51,7 @@ if ([self hasImageDataForURL:imageUrl] {
   - **decompressing** the image data (results the raw bitmap) - **high CPU consumer**
   - **CoreAnimation** uses the decompressed data and **renders** it
 - **improper byte-aligned images** are **copied** by **CoreAnimation** so that their byte-alignament is fixed and can be rendered. This isn’t stated by Apple docs, but profiling apps with Instruments shows CA::Render::copy_image even when the Core Animation instrument shows no images copied
-- starting with **iOS 7**, the **JPEG hardware decoder** is **no longer accessible** to 3rd party apps. This means our apps are relying on a software decoder which is significantly slower.
+- starting with **iOS 7**, the **JPEG hardware decoder** is **no longer accessible** to 3rd party apps. This means our apps are relying on a software decoder which is significantly slower. This was noticed by the FastImageCache team on their [Github page](https://github.com/path/FastImageCache#the-problem) and also by Nick Lockwood on a [Twitter post](https://twitter.com/nicklockwood/status/401128101049942016).
 
 ## A strong iOS image cache component must:
 
@@ -62,6 +62,9 @@ if ([self hasImageDataForURL:imageUrl] {
 - use **GCD** and **blocks**. This makes the code more performant, easier to read and write. In nowadays, GCD and blocks is a must for async operations
 - *nice to have: category over UIImageView for trivial integration.*
 - *nice to have: ability to process the image after download and before storing it into the cache.*
+
+#### Advanced imaging on iOS
+To find out more about imaging on iOS, how the SDK frameworks work (CoreGraphics, Image IO, CoreAnimation, CoreImage), CPU vs GPU and more, go through this [great article](http://www.slideshare.net/rsebbe/2014-cocoaheads-advimaging) by @rsebbe.
 
 #### Is Core Data a good candidate?
 
@@ -83,6 +86,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 
 #### Benchmark app - project:</h6>
 - the demo project source can be found on Github under the name [ImageCachingBenchmark](https://github.com/bpoplauschi/ImageCachingBenchmark), together with the charts, collected data tables and more.
+- please note the project from Github had to be modified as well as the image caching libraries so that we know the cache source of each image loaded. Because I didn’t check in the pods files (not a good practice) and that the project code must compile, the state in which is now doesn’t generate all the data used for the benchmarks. If some of you want to rerun the benchmarks, you need to make a similar completionBlock for image loading for all libraries like the default one on SDWebImage that returns the SDImageCacheType.
 
 ### Fastest vs slowest device results
 [Complete benchmark results](http://htmlpreview.github.io/?https://github.com/bpoplauschi/ImageCachingBenchmark/blob/master/tables/tables.html) can be found on the Github project. Since those tables are big, I decided to create charts using the fastest device data (iPhone 5s) and the slowest (iPhone 4).
@@ -126,7 +130,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>async download</td>
+<th>async download</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
 <td>&#10003;</td>
@@ -135,7 +139,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>backgr decompr</td>
+<th>backgr decompr</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
@@ -144,7 +148,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>store decompr</td>
+<th>store decompr</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
@@ -153,7 +157,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>memory cache</td>
+<th>memory cache</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
@@ -162,7 +166,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>disk cache</td>
+<th>disk cache</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
 <td>iOS7 NSURLCache</td>
@@ -171,7 +175,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>GCD and blocks</td>
+<th>GCD and blocks</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
@@ -180,7 +184,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>easy to use</td>
+<th>easy to use</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
 <td>&#10003;</td>
@@ -189,7 +193,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>UIImageView categ</td>
+<th>UIImageView categ</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
 <td>&#10003;</td>
@@ -198,7 +202,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>from memory</td>
+<th>from memory</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
 <td>&#10003;</td>
@@ -207,7 +211,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>from disk</td>
+<th>from disk</td>
 <td>&#10007;</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
@@ -216,7 +220,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>lowest CPU</td>
+<th>lowest CPU</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
 <td>&#10007;</td>
@@ -225,7 +229,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>lowest mem</td>
+<th>lowest mem</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
 <td>&#10007;</td>
@@ -233,9 +237,8 @@ Just looking at the concepts listed above makes it clear that writing such a com
 <td>&#10003;</td>
 </tr>
 
-
 <tr>
-<td>high FPS</td>
+<th>high FPS</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
 <td>&#10003;</td>
@@ -244,7 +247,7 @@ Just looking at the concepts listed above makes it clear that writing such a com
 </tr>
 
 <tr>
-<td>License</td>
+<th>License</td>
 <td>MIT</td>
 <td>MIT</td>
 <td>MIT</td>
@@ -254,6 +257,14 @@ Just looking at the concepts listed above makes it clear that writing such a com
 
 </tbody>
 </table>
+
+#### Table legend:
+- async download = support for asynchronous downloads directly into the library
+- backgr decompr = image decompression executed on a background queue/thread
+- store decompr = images are stored in their decompressed version
+- memory/disk cache = support for memory/disk cache
+- UIImageView categ = category for UIImageView directly into the library
+- from memory/disk = top results for the average retrieve times from memory/disk cache
 
 ## Conclusions
 - writing an iOS image caching component from scratch is hard
