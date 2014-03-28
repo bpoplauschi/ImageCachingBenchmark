@@ -86,7 +86,8 @@ Just looking at the concepts listed above makes it clear that writing such a com
 
 #### Benchmark app - project:</h6>
 - the demo project source can be found on Github under the name [ImageCachingBenchmark](https://github.com/bpoplauschi/ImageCachingBenchmark), together with the charts, collected data tables and more.
-- please note the project from Github had to be modified as well as the image caching libraries so that we know the cache source of each image loaded. Because I didn’t check in the pods files (not a good practice) and that the project code must compile, the state in which is now doesn’t generate all the data used for the benchmarks. If some of you want to rerun the benchmarks, you need to make a similar completionBlock for image loading for all libraries like the default one on SDWebImage that returns the SDImageCacheType.
+- please note the project from Github had to be modified as well as the image caching libraries so that we know the cache source of each image loaded. Because I didn’t want to check in the Cocoapods source files (not a good practice) and that the project code must compile after a clean install of the Cocoapods, the current version of the Github project is slightly different from the one I used for the benchmarks.
+- if some of you want to rerun the benchmarks, you need to make a similar completionBlock for image loading for all libraries like the default one on SDWebImage that returns the `SDImageCacheType`.
 
 ### Fastest vs slowest device results
 [Complete benchmark results](http://htmlpreview.github.io/?https://github.com/bpoplauschi/ImageCachingBenchmark/blob/master/tables/tables.html) can be found on the Github project. Since those tables are big, I decided to create charts using the fastest device data (iPhone 5s) and the slowest (iPhone 4).
