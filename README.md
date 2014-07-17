@@ -73,11 +73,11 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
 Just looking at the concepts listed above makes it clear that writing such a component on your own is hard, time consuming and painful. That’s why we turn to open source image caching solutions. Most of you have heard of SDWebImage or the new FastImageCache. In order to decide which one fits you best, I’ve benchmarked them and analysed how they match our list of requirements.
 
 #### Libraries tested
-- [SDWebImage](https://github.com/rs/SDWebImage)
-- [FastImageCache](https://github.com/path/FastImageCache)
-- [AFNetworking](https://github.com/AFNetworking/AFNetworking)
-- [TMCache](https://github.com/tumblr/TMCache)
-- [Haneke](https://github.com/hpique/Haneke)
+- [SDWebImage](https://github.com/rs/SDWebImage) - [3.5.4](https://github.com/rs/SDWebImage/releases/tag/3.5.4)
+- [FastImageCache](https://github.com/path/FastImageCache) - [1.2](https://github.com/path/FastImageCache/releases/tag/1.2)
+- [AFNetworking](https://github.com/AFNetworking/AFNetworking) - [2.2.1](https://github.com/AFNetworking/AFNetworking/releases/tag/2.2.1)
+- [TMCache](https://github.com/tumblr/TMCache) - [1.2.0](https://github.com/tumblr/TMCache/releases/tag/1.2.0)
+- [Haneke](https://github.com/hpique/Haneke) - [0.0.5](https://github.com/hpique/Haneke/releases/tag/v0.0.5)
 
 *Note: AFNetworking was added to the comparison because it benefits of disk caching from iOS 7 (due to NSURLCache).*
 
