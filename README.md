@@ -177,7 +177,7 @@ if ([self hasImageDataForURL:imageUrl] {
 <td>6.4</td>
 <td>7</td>
 <td>140</td>
-<td>65</td>
+<td>6.5</td>
 <td>140</td>
 <td>57.8</td>
 </tr>
