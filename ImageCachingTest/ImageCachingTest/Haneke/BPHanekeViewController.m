@@ -50,7 +50,7 @@
     NSDate *initialDate = [NSDate date];
     __weak typeof(cell)weakCell = cell;
     
-    [cell.customImageView hnk_setImageFromURL:url placeholderImage:nil success:^(UIImage *inImage) {
+    [cell.customImageView hnk_setImageFromURL:url placeholder:nil success:^(UIImage *inImage) {
         __strong __typeof(weakCell)strongCell = weakCell;
         if ([strongCell.imageUrl isEqual:url]) {
             strongCell.customImageView.image = inImage;
