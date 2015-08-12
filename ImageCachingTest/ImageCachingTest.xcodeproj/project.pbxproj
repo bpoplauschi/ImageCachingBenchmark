@@ -32,7 +32,6 @@
 		43E5D81C18CD107C00091E7D /* BPFullScreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */; };
 		43E5D82018CD19AE00091E7D /* BPTMCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */; };
 		43E5D82418CD1F2500091E7D /* BPHanekeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D82318CD1F2500091E7D /* BPHanekeViewController.m */; };
-		451A84861B79FF0500B3A5B7 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 451A84851B79FF0500B3A5B7 /* EGOCache.m */; };
 		4577ACED1B79FC68004FAE62 /* BPPINCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4577ACEC1B79FC68004FAE62 /* BPPINCacheViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -88,8 +87,6 @@
 		43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTMCacheViewController.m; sourceTree = "<group>"; };
 		43E5D82218CD1F2500091E7D /* BPHanekeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHanekeViewController.h; sourceTree = "<group>"; };
 		43E5D82318CD1F2500091E7D /* BPHanekeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPHanekeViewController.m; sourceTree = "<group>"; };
-		451A84841B79FF0500B3A5B7 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
-		451A84851B79FF0500B3A5B7 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		4577ACEB1B79FC68004FAE62 /* BPPINCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPPINCacheViewController.h; sourceTree = "<group>"; };
 		4577ACEC1B79FC68004FAE62 /* BPPINCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPPINCacheViewController.m; sourceTree = "<group>"; };
 		746AE5CA4981850ADD4FF4D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,8 +283,6 @@
 		451A84831B79FF0500B3A5B7 /* EGOCache */ = {
 			isa = PBXGroup;
 			children = (
-				451A84841B79FF0500B3A5B7 /* EGOCache.h */,
-				451A84851B79FF0500B3A5B7 /* EGOCache.m */,
 			);
 			path = EGOCache;
 			sourceTree = "<group>";
@@ -446,7 +441,6 @@
 				43E5D7FE18CCF8BF00091E7D /* BPTableViewCell.m in Sources */,
 				43E5D7FD18CCF8BF00091E7D /* BPAppDelegate.m in Sources */,
 				43E5D80718CCF8CB00091E7D /* BPNoCacheViewController.m in Sources */,
-				451A84861B79FF0500B3A5B7 /* EGOCache.m in Sources */,
 				4577ACED1B79FC68004FAE62 /* BPPINCacheViewController.m in Sources */,
 				43E5D81918CD0A0800091E7D /* BPAFNetworkingViewController.m in Sources */,
 				43E5D7FF18CCF8BF00091E7D /* BPViewController.m in Sources */,
