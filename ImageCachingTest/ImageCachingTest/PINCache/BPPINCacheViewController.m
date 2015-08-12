@@ -23,7 +23,6 @@
 
 #import "BPPINCacheViewController.h"
 #import "PINCache.h"
-#import "TMCache.h"
 
 
 @implementation BPPINCacheViewController
@@ -49,9 +48,7 @@
     
     NSDate *initialDate = [NSDate date];
     __weak typeof(cell)weakCell = cell;
-    
-    
-    ////////////////////////////////////////////////////
+
     [[PINCache sharedCache] objectForKey:[url absoluteString] block:^(PINCache *cache, NSString *key, id object) {
         __strong typeof(weakCell)strongCell = weakCell;
         
@@ -87,32 +84,4 @@
     }];
     return cell;
 }
-
-    
-    ////////////////////////////////////////////////////
-    
- /*
-    
-    [[PINCache sharedCache] objectForKey:[url absoluteString]
-                                   block:^(PINCache *cache, NSString *key, id object) {
-                                       if (object) {
-                                           [self setImageOnMainThread:(UIImage *)object];
-                                           return;
-                                       }
-                                       
-                                       NSLog(@"cache miss, requesting %@", url);
-                                       
-                                       NSURLResponse *response = nil;
-                                       NSURLRequest *request = [NSURLRequest requestWithURL:url];
-                                       NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-                                       
-                                       UIImage *image = [[UIImage alloc] initWithData:data scale:[[UIScreen mainScreen] scale]];
-                                       [self setImageOnMainThread:image];
-                                       
-                                       [[PINCache sharedCache] setObject:image forKey:[url absoluteString]];
-                                   }];
-  
-*/
-
 @end
-
