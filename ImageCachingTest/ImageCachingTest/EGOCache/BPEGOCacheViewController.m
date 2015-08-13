@@ -44,10 +44,25 @@
     NSURL *url = [self imageUrlForIndexPath:indexPath];
     cell.imageUrl = url;
     cell.customImageView.image = nil;
-     /*
+    
+    
+     //*
      UIImage *saveImage=[UIImage imageNamed:@"iOSDevTip"];
      [[EGOCache globalCache]setImage:saveImage forKey:[NSString stringWithFormat:@"EGOImageLoader-%lu",(unsigned long)[@"SaveImage"hash]]withTimeoutInterval:24*60*60];
     //*/
+    
+    UIImage *getSaveImage = [[EGOCache globalCache]imageForKey:[NSString stringWithFormat:@"EGOImageLoader-%lu",(unsigned long)[@"SaveImage"hash]]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.customImageView.image = getSaveImage;
+    });
+    
+    
+    
+    
+    
+    
+    
+
     return cell;
 }
 
