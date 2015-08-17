@@ -81,6 +81,7 @@ int numberOfMemoryCycles = 0;
 }
 
 - (void)updateInfo:(NSTimer *)inTimer {
+    /*
     CGFloat cpuUsage = cpu_usage();
     if (cpuUsage) {
         numberOfCPUCycles++;
@@ -104,6 +105,7 @@ int numberOfMemoryCycles = 0;
         
         NSLog(@"* Memory Usage: %.4F, average %.4f, max %.4f", memoryUsage, totalMemoryUsage/numberOfMemoryCycles, maxMemoryUsage);
     }
+     */
 }
 
 // from http://www.g8production.com/post/68155681673/get-cpu-usage-in-ios
