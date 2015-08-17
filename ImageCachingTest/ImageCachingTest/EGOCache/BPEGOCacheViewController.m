@@ -44,27 +44,38 @@
     NSURL *url = [self imageUrlForIndexPath:indexPath];
     cell.imageUrl = url;
     cell.customImageView.image = nil;
-    
-    
-     //*
-     UIImage *saveImage=[UIImage imageNamed:@"iOSDevTip"];
-     [[EGOCache globalCache]setImage:saveImage forKey:[NSString stringWithFormat:@"EGOImageLoader-%lu",(unsigned long)[@"SaveImage"hash]]withTimeoutInterval:24*60*60];
-    //*/
-    
-    UIImage *getSaveImage = [[EGOCache globalCache]imageForKey:[NSString stringWithFormat:@"EGOImageLoader-%lu",(unsigned long)[@"SaveImage"hash]]];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        cell.customImageView.image = getSaveImage;
-    });
-    
-    
-    
-    
-    
-    
-    
 
-    return cell;
-}
-
-
+        
+//    UIImage *sourceImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    
+   
+    
+    __weak typeof(cell)weakCell = cell;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            // Fetch the desired source image by making a network request
+            NSDate *initialDate = [NSDate date];
+            NSString *temp;
+            temp = [NSString stringWithFormat:@"%@",url];
+            UIImage* image = [UIImage imageWithData:[[EGOCache globalCache] dataForKey:temp]];
+            
+            
+            if(image==NULL){
+                UIImage *sourceImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+                [[EGOCache globalCache] setData:UIImagePNGRepresentation(sourceImage) forKey:temp withTimeoutInterval:604800];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                    __strong __typeof(weakCell)strongCell = weakCell;
+                    if ([strongCell.imageUrl isEqual:url]) {
+                        strongCell.customImageView.image = image;
+                        CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
+                        [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
+                    }
+            });
+        
+            });
+        
+        return cell;
+    }
+                   
 @end

@@ -67,8 +67,7 @@ int     numberOfRetrieves[3];
 
 - (NSURL*)imageUrlForIndexPath:(NSIndexPath *)inIndexPath {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03ld.jpg", (long)inIndexPath.row]];
-    
-    return url;
+        return url;
 }
 
 - (void)trackRetrieveDuration:(CGFloat)inDuration forCacheType:(BPCacheType)inCacheType {
