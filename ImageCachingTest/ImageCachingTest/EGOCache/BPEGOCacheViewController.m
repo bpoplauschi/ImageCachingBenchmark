@@ -1,7 +1,7 @@
 //
 //  BPFastImageCacheViewController.m
 //
-//  Copyright (c) 2014 Bogdan Poplauschi
+//  Copyright (c) 2015 Wangjiawei
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -44,38 +44,36 @@
     NSURL *url = [self imageUrlForIndexPath:indexPath];
     cell.imageUrl = url;
     cell.customImageView.image = nil;
-
-        
-//    UIImage *sourceImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    
-   
-    
+    NSDate *initialDate = [NSDate date];
     __weak typeof(cell)weakCell = cell;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            // Fetch the desired source image by making a network request
-            NSDate *initialDate = [NSDate date];
-            NSString *temp;
-            temp = [NSString stringWithFormat:@"%@",url];
-            UIImage* image = [UIImage imageWithData:[[EGOCache globalCache] dataForKey:temp]];
-            
-            
-            if(image==NULL){
-                UIImage *sourceImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-                [[EGOCache globalCache] setData:UIImagePNGRepresentation(sourceImage) forKey:temp withTimeoutInterval:604800];
+    NSString* URL = [NSString stringWithFormat:@"%@",url];
+    UIImage* image = [UIImage imageWithData:[[EGOCache globalCache] dataForKey:URL]];
+    __strong __typeof(weakCell)strongCell = weakCell;
+    
+    if(image){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([strongCell.imageUrl isEqual:url]) {
+                strongCell.customImageView.image = image;
+                CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
+                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                    __strong __typeof(weakCell)strongCell = weakCell;
-                    if ([strongCell.imageUrl isEqual:url]) {
-                        strongCell.customImageView.image = image;
-                        CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
-                        [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
-                    }
-            });
-        
-            });
-        
-        return cell;
+        });
     }
-                   
+    else{
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+         UIImage *sourceImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+            __strong typeof(weakCell)strongCell = weakCell;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([strongCell.imageUrl isEqual:url]) {
+                strongCell.customImageView.image = sourceImage;
+                CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
+                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
+            }
+            [[EGOCache globalCache] setData:UIImagePNGRepresentation(sourceImage) forKey:URL withTimeoutInterval:604800];
+        });
+        });
+    }
+    return cell;
+}
 @end

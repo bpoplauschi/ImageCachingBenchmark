@@ -1,7 +1,7 @@
 //
 //  BPEGOCacheViewController.h
 //
-//  Copyright (c) 2014 Bogdan Poplauschi
+//  Copyright (c) 2015 Wangjiawei
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal

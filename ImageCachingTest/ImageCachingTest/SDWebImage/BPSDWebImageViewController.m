@@ -48,6 +48,7 @@
     cell.customImageView.image = nil;
     
     NSDate *initialDate = [NSDate date];
+    
     [cell.customImageView setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
         

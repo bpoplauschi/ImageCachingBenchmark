@@ -94,7 +94,6 @@ int     numberOfRetrieves[3];
             cacheTypeString = @"Disk";
             break;
     }
-    
     NSLog(@"[%@][%@] retrieved in %.4f, average %.4f, min %.4f, max %.4f",
           self.title,
           cacheTypeString,

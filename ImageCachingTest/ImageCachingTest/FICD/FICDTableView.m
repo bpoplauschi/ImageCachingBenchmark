@@ -89,6 +89,7 @@
 }
 
 - (void)_screenDidUpdateWhileScrolling:(CADisplayLink *)displayLink {
+    /*
     CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
     if (!_lastLogTime) {
         _lastLogTime = currentTime;
@@ -126,6 +127,8 @@
     } else {
         _framesInLastInterval++;
     }
+     
+     */
 }
 
 @end
