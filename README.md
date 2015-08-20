@@ -1,7 +1,7 @@
 ImageCachingBenchmark
 =====================
 
-Benchmark tests for iOS image caching solutions. Article available: http://bpoplauschi.wordpress.com/2014/03/21/ios-image-caching-sdwebimage-vs-fastimage/
+Benchmark tests for iOS image caching solutions. 
 
 ## Introduction
 In the past years, iOS apps have become more and more visually appealing. Displaying images is a key part of that, that’s why most of them use images that need to be downloaded and rendered. Most developers have faced the need to populate table views or collection views with images. Downloading the images is resource consuming (cellular data, battery, CPU, …), so in order to minimize this the caching model appeared.
@@ -14,8 +14,8 @@ Also, the benchmarks on the most used image caching open source libraries can be
 
 - download the images asynchronously
 - process images (scale, remove red eyes, remove borders, …) so they are ready to be displayed
-- write them on disk
-- read from disk and display them when needed
+- write them on disk or memory
+- read from disk or memory and display them when needed
 
 ```objectivec
 // assuming we have an NSURL *imageUrl and UIImageView *imageView, we need to load the image from the URL and display it in the imageView
@@ -73,11 +73,13 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
 Just looking at the concepts listed above makes it clear that writing such a component on your own is hard, time consuming and painful. That’s why we turn to open source image caching solutions. Most of you have heard of SDWebImage or the new FastImageCache. In order to decide which one fits you best, I’ve benchmarked them and analysed how they match our list of requirements.
 
 #### Libraries tested
-- [SDWebImage](https://github.com/rs/SDWebImage) - [3.5.4](https://github.com/rs/SDWebImage/releases/tag/3.5.4)
-- [FastImageCache](https://github.com/path/FastImageCache) - [1.2](https://github.com/path/FastImageCache/releases/tag/1.2)
-- [AFNetworking](https://github.com/AFNetworking/AFNetworking) - [2.2.1](https://github.com/AFNetworking/AFNetworking/releases/tag/2.2.1)
-- [TMCache](https://github.com/tumblr/TMCache) - [1.2.0](https://github.com/tumblr/TMCache/releases/tag/1.2.0)
-- [Haneke](https://github.com/hpique/Haneke) - [0.0.5](https://github.com/hpique/Haneke/releases/tag/v0.0.5)
+- [SDWebImage](https://github.com/rs/SDWebImage) - [3.7.3](https://github.com/rs/SDWebImage/releases/tag/3.7.3)
+- [FastImageCache](https://github.com/path/FastImageCache) - [1.3](https://github.com/path/FastImageCache/releases/tag/1.3)
+- [AFNetworking](https://github.com/AFNetworking/AFNetworking) - [2.5.4](https://github.com/AFNetworking/AFNetworking/releases/tag/2.5.4)
+- [TMCache](https://github.com/tumblr/TMCache) - [2.1.0](https://github.com/tumblr/TMCache/releases/tag/2.1.0)
+- [Haneke](https://github.com/hpique/Haneke) - [1.0.1](https://github.com/Haneke/Haneke/releases/tag/v1.0.1)
+- [PINCache](https://github.com/pinterest/PINCache) - [2.0.1](https://github.com/pinterest/PINCache/releases/tag/2.0.1)
+- [EGOCache](https://github.com/enormego/EGOCache) - [2.1.3](https://github.com/enormego/EGOCache/releases/tag/v2.1.3)
 
 *Note: AFNetworking was added to the comparison because it benefits of disk caching from iOS 7 (due to NSURLCache).*
 
