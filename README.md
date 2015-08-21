@@ -133,7 +133,8 @@ if ([self hasImageDataForURL:imageUrl] {
 ######HOW? - After the first load step, open each program of Cache again and scroll to the bottom, record data of memory usage at this moment. Then click to zoom in and record the data, then end this program of Cache ,go back to the main menu and record the data of memory usage. - Restart the APP, open each program and keep scrolling for about 3 minutes ,record the memory usage during this period of time.
 ######Result
  - Raw data are here. - Statistical results
- - measure 1
+
+######&nbsp;&nbsp;&nbsp;measure 1
  
  <table style="border:0px solid black; text-align:center; font-size:12px;">
 <tbody>
@@ -197,7 +198,7 @@ if ([self hasImageDataForURL:imageUrl] {
 </table>
 <br />
 
-- measure 2
+######&nbsp;&nbsp;&nbsp;measure 2
  
 ###SDWebImageCache:
 <p align="left" >
