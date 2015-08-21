@@ -1,14 +1,14 @@
 ImageCachingBenchmark
 =====================
 
-Benchmark tests for iOS image caching solutions. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Benchmark tests for iOS image caching solutions. 
 
-## Introduction
-In the past years, iOS apps have become more and more visually appealing. Displaying images is a key part of that, that’s why most of them use images that need to be downloaded and rendered. Most developers have faced the need to populate table views or collection views with images. Downloading the images is resource consuming (cellular data, battery, CPU, …), so in order to minimize this the caching model appeared.
+##Introduction
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the past years, iOS apps have become more and more visually appealing. Displaying images is a key part of that, that’s why most of them use images that need to be downloaded and rendered. Most developers have faced the need to populate table views or collection views with images. Downloading the images is resource consuming (cellular data, battery, CPU, …), so in order to minimize this the caching model appeared.
 
-To achieve a great user experience, it’s important to understand what is going on under the iOS hood when we cache and load images.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To achieve a great user experience, it’s important to understand what is going on under the iOS hood when we cache and load images.
 
-Also, the benchmarks on the most used image caching open source libraries can be of great help when choosing your solution.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also, the benchmarks on the most used image caching open source libraries can be of great help when choosing your solution.
 
 ## Classical approach
 
@@ -36,7 +36,7 @@ if ([self hasImageDataForURL:imageUrl] {
 }
 ```
 
-#### FPS simple math: 
+####FPS simple math: 
 
 - 60 FPS is our ideal for any UI update, so the experience is flawless
 - 60FPS => 16.7ms per frame. This means that if any main-queue operation takes longer than 16.7 ms, the scrolling FPS will drop, since the CPU will be busy doing something else than rendering UI.
@@ -64,15 +64,19 @@ if ([self hasImageDataForURL:imageUrl] {
 - *nice to have: ability to process the image after download and before storing it into the cache.*
 
 #### Advanced imaging on iOS
-To find out more about imaging on iOS, how the SDK frameworks work (CoreGraphics, Image IO, CoreAnimation, CoreImage), CPU vs GPU and more, go through this [great article](http://www.slideshare.net/rsebbe/2014-cocoaheads-advimaging) by @rsebbe.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To find out more about imaging on iOS, how the SDK frameworks work (CoreGraphics, Image IO, CoreAnimation, CoreImage), CPU vs GPU and more, go through this [great article](http://www.slideshare.net/rsebbe/2014-cocoaheads-advimaging) by @rsebbe.
 
 #### Is Core Data a good candidate?
 
-Here is a [benchmark of image caching using Core Data versus File System](http://biasedbit.com/filesystem-vs-coredata-image-cache/), the results are recommending the File System (as we are already accustomed to).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here is a [benchmark of image caching using Core Data versus File System](http://biasedbit.com/filesystem-vs-coredata-image-cache/), the results are recommending the File System (as we are already accustomed to).
 
-Just looking at the concepts listed above makes it clear that writing such a component on your own is hard, time consuming and painful. That’s why we turn to open source image caching solutions. Most of you have heard of SDWebImage or the new FastImageCache. In order to decide which one fits you best, I’ve benchmarked them and analysed how they match our list of requirements.
+<br />
+<br />
+<br />
+#Benchmark
 
-#### Libraries tested
+
+##Libraries tested
 - [SDWebImage](https://github.com/rs/SDWebImage) - [3.7.3](https://github.com/rs/SDWebImage/releases/tag/3.7.3)
 - [FastImageCache](https://github.com/path/FastImageCache) - [1.3](https://github.com/path/FastImageCache/releases/tag/1.3)
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - [2.5.4](https://github.com/AFNetworking/AFNetworking/releases/tag/2.5.4)
@@ -83,193 +87,172 @@ Just looking at the concepts listed above makes it clear that writing such a com
 
 *Note: AFNetworking was added to the comparison because it benefits of disk caching from iOS 7 (due to NSURLCache).*
 
-#### Scenario:
-- for each library, I made a clean install of the benchmark app, then started the app, scroll easily while all images are loaded, then scroll back and forth with different intensities (from slow to fast). I closed the app to force loading from disk cache (where available), then run the same scrolling scenario.
+<br />
+##TEST1 Load Time####Get the time of first load：
+######Using statistical methods
+ - the APP load 50 same images each time, but those images **have different URLs**.
+ 
+######How? - Open each program of Cache and wait for the finish of downloading from network. - Restart the APP and open each program again. Scroll to the bottom, the console will output the time of first loading of 50 images. Back to the menu and open other programs and scroll to the bottom again. - Repeat step 2 ten times, we have the time of load time. 
+######Result - Raw data are here. - Statistical results
+ <p align="left" >
+  <img src="graphs/firstloadtime1.png">
+  <img src="graphs/firstloadtime2.png">
+ </p>
+ - The reason for the pattern of statistical data is that, when you open a program,first nine images will be displayed immediately instead of being triggered by scroll the screen.It will take more time. I don’t want to delete them from the data, because I think they are also a part of the performance evaluation.
+######Conclusion
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the graphs ,we can easy to see that 
 
-#### Benchmark app - project:</h6>
-- the demo project source can be found on Github under the name [ImageCachingBenchmark](https://github.com/bpoplauschi/ImageCachingBenchmark), together with the charts, collected data tables and more.
-- please note the project from Github had to be modified as well as the image caching libraries so that we know the cache source of each image loaded. Because I didn’t want to check in the Cocoapods source files (not a good practice) and that the project code must compile after a clean install of the Cocoapods, the current version of the Github project is slightly different from the one I used for the benchmarks.
-- if some of you want to rerun the benchmarks, you need to make a similar completionBlock for image loading for all libraries like the default one on SDWebImage that returns the `SDImageCacheType`.
+ - **FastImageCache** is the best in this respect.
+ - **EGOCache,PINCache,TMCache** are also good.  - The performance of **AFNetworking** is not satisfactory.
+<br />##Get the time of scroll load：
+######Using statistical methods
+ - the APP load 50 same images each time, but those images **have different URLs**.
+ ######HOW? - After testing the time of first load, we scroll back and the console will output the time of the time of scroll load. Some of the Caches load images from disk and some of the Caches load images from memory. We will separate the data by that.
+ 
+######Result
+ - Raw data are here. - Statistical results
+ <p align="left" >
+  <img src="graphs/scrollloadtime1.png">
+  <img src="graphs/scrollloadtime2.png">
+  <img src="graphs/scrollloadtime3.png">
+  <img src="graphs/scrollloadtime4.png">
+ </p> ######Conclusion
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the graphs ,we can easy to see that
+ 
+ - AFNetworking is better than SDWebImage or Haneke.
+ - PINCache is better than TMCache,EGOCache,FastImageCache.
+ 
+######Note
+ - I only show the statistical graph instead of statistical data such as standard deviation and average ,because I think we can see all the result we want though the graphs clearly.
 
-### Fastest vs slowest device results
-[Complete benchmark results](http://htmlpreview.github.io/?https://github.com/bpoplauschi/ImageCachingBenchmark/blob/master/tables/tables.html) can be found on the Github project. Since those tables are big, I decided to create charts using the fastest device data (iPhone 5s) and the slowest (iPhone 4).
 
-#### iPhone 5s results
-
-<p align="left" >
-  <img src="graphs/iPhone5s_mem.png" float=left width=350>
-  <img src="graphs/iPhone5s_disk.png" float=right width=350>
-</p>
-
-<p align="left" >
-  <img src="graphs/iPhone5s_cpu_mem.png" float=left width=350>
-  <img src="graphs/iPhone5s_FPS.png" float=right width=350>
-</p>
-
-#### iPhone 4 results
-
-<p align="left" >
-  <img src="graphs/iPhone4_mem.png" float=left width=350>
-  <img src="graphs/iPhone4_disk.png" float=right width=350>
-</p>
-
-<p align="left" >
-  <img src="graphs/iPhone4_cpu_mem.png" float=left width=350>
-  <img src="graphs/iPhone4_FPS.png" float=right width=350>
-</p>
-
-#### Summary
-
-<table style="border:0px solid black; text-align:center; font-size:12px;">
+<br />
+##Test2 Memory Usage
+######Using statistical methods
+ - The APP load 30 different images each time.
+######HOW? - After the first load step, open each program of Cache again and scroll to the bottom, record data of memory usage at this moment. Then click to zoom in and record the data, then end this program of Cache ,go back to the main menu and record the data of memory usage. - Restart the APP, open each program and keep scrolling for about 3 minutes ,record the memory usage during this period of time.
+######Result
+ - Raw data are here. - Statistical results
+ - measure 1
+ <table style="border:0px solid black; text-align:center; font-size:12px;">
 <tbody>
 
 <tr>
-<th>Results</th>
+<th>Results/MB</th>
 <th>SDWebImage</th>
 <th>FastImageCache</th>
 <th>AFNetworking</th>
 <th>TMCache</th>
 <th>Haneke</th>
+<th>PINCache</th>
+<th>EGOCache</th>
 </tr>
 
 <tr>
-<th>async download</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
+<th>Init</td>
+<td>6.9</td>
+<td>6.9</td>
+<td>6.9</td>
+<td>6.9</td>
+<td>6.9</td>
+<td>6.9</td>
+<td>6.9</td>
 </tr>
 
 <tr>
-<th>backgr decompr</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
+<th>Stable</td>
+<td>9.9</td>
+<td>9.6</td>
+<td>10.3</td>
+<td>143</td>
+<td>10.2</td>
+<td>143</td>
+<td>61</td>
 </tr>
 
 <tr>
-<th>store decompr</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
+<th>Click to zoom</td>
+<td>6.8</td>
+<td>6.4</td>
+<td>7</td>
+<td>140</td>
+<td>65</td>
+<td>140</td>
+<td>57.8</td>
 </tr>
 
 <tr>
-<th>memory cache</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>disk cache</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>iOS7 NSURLCache</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>GCD and blocks</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>easy to use</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>UIImageView categ</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>from memory</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>from disk</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
-</tr>
-
-<tr>
-<th>lowest CPU</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>lowest mem</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>high FPS</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10003;</td>
-<td>&#10007;</td>
-<td>&#10003;</td>
-</tr>
-
-<tr>
-<th>License</td>
-<td>MIT</td>
-<td>MIT</td>
-<td>MIT</td>
-<td>Apache</td>
-<td>Apache</td>
+<th>Back to menu</td>
+<td>7.5</td>
+<td>7.2</td>
+<td>8.2</td>
+<td>140</td>
+<td>7.3</td>
+<td>140</td>
+<td>58.6</td>
 </tr>
 
 </tbody>
 </table>
 
-#### Table legend:
-- async download = support for asynchronous downloads directly into the library
-- backgr decompr = image decompression executed on a background queue/thread
-- store decompr = images are stored in their decompressed version
-- memory/disk cache = support for memory/disk cache
-- UIImageView categ = category for UIImageView directly into the library
-- from memory/disk = top results for the average retrieve times from memory/disk cache
+ 
+ 
+ 
+ 
+ 
+ - measure 2
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SDWebImageCache:
+  <img src="graphs/memory1.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FastImageCache: 
+   <img src="graphs/memory2.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AFNetworking: 
+  <img src="graphs/memory3.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TMCache:
+  <img src="graphs/memory4.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Haneke:
+  <img src="graphs/memory5.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PINCache:
+  <img src="graphs/memory6.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EGOCache:
+  <img src="graphs/memory7.jpg">
+######Conclusion
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the graphs and charts,we can easy to see that
+ - SDWebImage,FastImageCache and AFNetworking have good performance on the memory usage of stationary state. - SDWebImage,FastImageCache,TMCache and Haneke have some problems on memory leak when we keep the state of scrolling.
 
-## Conclusions
-- writing an iOS image caching component from scratch is hard
-- SDWebImage and AFNetworking are solid projects, with many contributors, that are maintained properly. FastImageCache is catching up pretty fast with that.
-- looking at all the data provided above, I think we can all agree **SDWebImage** is the best solution at this time, even if for some projects AFNetworking or FastImageCache might fit better. It all depends on the project's requirements.
+
+##Test3 FPS and CPU Usage######Using statistical methods- The APP load 30 different images each time.
+
+######HOW?
+- After the first load step, we open each program of Cache again and scroll to the bottom, then we keep scrolling for about 10 seconds and record the FPS and CPU usage during this period of time.
+######Result
+ - Raw data are here. - Statistical results
+
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SDWebImageCache:
+  <img src="graphs/FPS1.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FastImageCache: 
+   <img src="graphs/FPS2.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AFNetworking: 
+  <img src="graphs/FPS3.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TMCache:
+  <img src="graphs/FPS4.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Haneke:
+  <img src="graphs/FPS5.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PINCache:
+  <img src="graphs/FPS6.jpg">
+###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EGOCache:
+  <img src="graphs/FPS7.jpg">
+######Conclusion - Because the selection of measurement interval is small, the FPS not up to 60 doesn’t means that we can see the lag definitely. 
+ - But from the graphs we can still see that all but EGOCache have good performance, I can also see that from the mobile screen <br /><br />##Summary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the data we measured, I think **AFNetworking** has the best performance except in the respect of first load time, but I think the performance of first load time accounts for very small proportion of all performance.
+
+
+
+##Note
+ - All those data above measured by Jiawei Wang,If you have any questions, please do not hesitate to let me know(@wangjwchn). 
+ - Please give credit to the original author when you use it elsewhere.
+
+
+
+
+
+
+
