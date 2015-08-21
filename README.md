@@ -195,6 +195,7 @@ if ([self hasImageDataForURL:imageUrl] {
 
 </tbody>
 </table>
+<br />
 
 - measure 2
  
