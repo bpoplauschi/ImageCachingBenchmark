@@ -113,9 +113,9 @@ if ([self hasImageDataForURL:imageUrl] {
  - Raw data are here. - Statistical results
  <p align="left" >
   <img src="graphs/scrollloadtime1.png">
+  <img src="graphs/scrollloadtime4.png">
   <img src="graphs/scrollloadtime2.png">
   <img src="graphs/scrollloadtime3.png">
-  <img src="graphs/scrollloadtime4.png">
  </p> ######Conclusion
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the graphs ,we can easy to see that
  
@@ -196,7 +196,7 @@ if ([self hasImageDataForURL:imageUrl] {
 </tbody>
 </table>
 
- - measure 2
+- measure 2
  
 ###SDWebImageCache:
 <p align="left" >
@@ -272,7 +272,7 @@ if ([self hasImageDataForURL:imageUrl] {
 
 
 ##Note
- - All those data above measured by Jiawei Wang,If you have any questions, please do not hesitate to let me know(@wangjwchn). 
+ - All those data above measured by Jiawei Wang,If you have any questions, please do not hesitate to let me know(@wangjwchn(https://github.com/wangjwchn)). 
  - Please give credit to the original author when you use it elsewhere.
 
 
