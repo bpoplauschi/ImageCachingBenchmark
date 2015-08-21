@@ -274,7 +274,7 @@ if ([self hasImageDataForURL:imageUrl] {
 
 
 ##Note
- - All those data above measured by Jiawei Wang,If you have any questions, please do not hesitate to let me know(@wangjwchn(https://github.com/wangjwchn)). 
+ - All those data above measured by Jiawei Wang,If you have any questions, please do not hesitate to let me know([@wangjwchn](https://github.com/wangjwchn)). 
  - Please give credit to the original author when you use it elsewhere.
 
 
