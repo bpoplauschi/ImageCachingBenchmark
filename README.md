@@ -93,7 +93,7 @@ if ([self hasImageDataForURL:imageUrl] {
  - the APP load 50 same images each time, but those images **have different URLs**.
  
 ######How? - Open each program of Cache and wait for the finish of downloading from network. - Restart the APP and open each program again. Scroll to the bottom, the console will output the time of first loading of 50 images. Back to the menu and open other programs and scroll to the bottom again. - Repeat step 2 ten times, we have the time of load time. 
-######Result - Raw data are [here](http://htmlpreview.github.io/?https://github.com/wangjwchn/ImageCachingBenchmark/blob/master/tables/table1.htm). - Statistical results
+######Result - Raw data are [here](http://htmlpreview.github.io/?https://github.com/wangjwchn/ImageCachingBenchmark/blob/master/tables/table1.html). - Statistical results
  <p align="left" >
   <img src="graphs/firstloadtime1.png">
   <img src="graphs/firstloadtime2.png">
@@ -110,7 +110,7 @@ if ([self hasImageDataForURL:imageUrl] {
  ######HOW? - After testing the time of first load, we scroll back and the console will output the time of the time of scroll load. Some of the Caches load images from disk and some of the Caches load images from memory. We will separate the data by that.
  
 ######Result
- - Raw data are [here](http://htmlpreview.github.io/?https://github.com/wangjwchn/ImageCachingBenchmark/blob/master/tables/table2.htm). - Statistical results
+ - Raw data are [here](http://htmlpreview.github.io/?https://github.com/wangjwchn/ImageCachingBenchmark/blob/master/tables/table2.html). - Statistical results
  <p align="left" >
   <img src="graphs/scrollloadtime1.png">
   <img src="graphs/scrollloadtime4.png">
