@@ -131,8 +131,7 @@ if ([self hasImageDataForURL:imageUrl] {
 ######Using statistical methods
  - The APP load 30 different images each time.
 ######HOW? - After the first load step, open each program of Cache again and scroll to the bottom, record data of memory usage at this moment. Then click to zoom in and record the data, then end this program of Cache ,go back to the main menu and record the data of memory usage. - Restart the APP, open each program and keep scrolling for about 3 minutes ,record the memory usage during this period of time.
-######Result
- - Raw data are here. - Statistical results
+######Result - Statistical results
 
 ######&nbsp;&nbsp;&nbsp;measure 1
  
@@ -237,8 +236,7 @@ if ([self hasImageDataForURL:imageUrl] {
 
 ######HOW?
 - After the first load step, we open each program of Cache again and scroll to the bottom, then we keep scrolling for about 10 seconds and record the FPS and CPU usage during this period of time.
-######Result
- - Raw data are here. - Statistical results
+######Result - Statistical results
 
 ###SDWebImageCache:
 <p align="left" >
