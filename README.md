@@ -68,7 +68,7 @@ if ([self hasImageDataForURL:imageUrl] {
 - *nice to have: ability to process the image after download and before storing it into the cache.*
 
 #### Advanced imaging on iOS
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To find out more about imaging on iOS, how the SDK frameworks work (CoreGraphics, Image IO, CoreAnimation, CoreImage), CPU vs GPU and more, go through this [great article](http://www.slideshare.net/rsebbe/2014-cocoaheads-advimaging) by @rsebbe.
+To find out more about imaging on iOS, how the SDK frameworks work (CoreGraphics, Image IO, CoreAnimation, CoreImage), CPU vs GPU and more, go through this [great article](http://www.slideshare.net/rsebbe/2014-cocoaheads-advimaging) by @rsebbe.
 
 #### Is Core Data a good candidate?
 
@@ -110,7 +110,7 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
  - The reason for the pattern of statistical data is that, when you open a program,first nine images will be displayed immediately instead of being triggered by scroll the screen.It will take more time. I don’t want to delete them from the data, because I think they are also a part of the performance evaluation.
 
 ######Conclusion
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the graphs, we can easy to see that 
+From the graphs, we can easy to see that 
 
  - **FastImageCache** is the best in this respect.
  - **EGOCache,PINCache,TMCache** are also good. 
@@ -137,7 +137,7 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
  </p>
  
 ######Conclusion
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the graphs, we can easy to see that
+From the graphs, we can easy to see that
  
  - AFNetworking is better than SDWebImage or Haneke.
  - PINCache is better than TMCache,EGOCache,FastImageCache.
@@ -160,7 +160,7 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
 ######Result
  - Statistical results
 
-######&nbsp;&nbsp;&nbsp;measure 1
+######measure 1
  
  <table style="border:0px solid black; text-align:center; font-size:12px;">
 <tbody>
@@ -224,7 +224,7 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
 </table>
 <br />
 
-######&nbsp;&nbsp;&nbsp;measure 2
+######measure 2
  
 ###SDWebImageCache:
 <p align="left" >
@@ -256,7 +256,7 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
 </p>
 
 ######Conclusion
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the graphs and charts,we can easy to see that
+From the graphs and charts,we can easy to see that
 
  - SDWebImage,FastImageCache and AFNetworking have good performance on the memory usage of stationary state.
  - SDWebImage,FastImageCache,TMCache and Haneke have some problems on memory leak when we keep the state of scrolling.
@@ -312,7 +312,7 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
 <br />
 <br />
 ##Summary
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the data we measured, I think **AFNetworking** has the best performance except in the respect of first load time, but I think the performance of first load time accounts for very small proportion of all performance.
+From the data we measured, I think **AFNetworking** has the best performance except in the respect of first load time, but I think the performance of first load time accounts for very small proportion of all performance.
 
 
 
