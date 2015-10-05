@@ -24,7 +24,7 @@
 #import "BPAppDelegate.h"
 #import "BPViewController.h"
 #import <FICImageCache.h>
-
+#import "AFNetworkActivityIndicatorManager.h"
 #include <mach/mach.h>
 
 CGFloat maxCPUUsage = 0;
@@ -50,13 +50,23 @@ int numberOfMemoryCycles = 0;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
-    
-    [self configureFastImageCache];
-    
     [self configureCPUTracking];
-    
+    [self configureFastImageCache];
+  //  [self configureAFNetworking];
     return YES;
 }
+
+
+-(void) configureAFNetworking{
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:0 * 1024 * 1024 diskCapacity:0 * 1024 * 1024 diskPath:nil];
+    [NSURLCache setSharedURLCache:URLCache];
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+}
+
+
+
+
+
 
 -(void)configureFastImageCache {
     FICImageFormat *mediumUserThumbnailImageFormat = [[FICImageFormat alloc] init];
@@ -90,7 +100,7 @@ int numberOfMemoryCycles = 0;
             maxCPUUsage = cpuUsage;
         }
         
-        NSLog(@"* CPU Usage: %.4f, average %.4f, max %.4f", cpuUsage, totalCPUUsage/numberOfCPUCycles, maxCPUUsage);
+      //  NSLog(@"* CPU Usage: %.4f, average %.4f, max %.4f", cpuUsage, totalCPUUsage/numberOfCPUCycles, maxCPUUsage);
     }
     
     CGFloat memoryUsage = memory_usage_in_megabytes();
@@ -102,7 +112,7 @@ int numberOfMemoryCycles = 0;
             maxMemoryUsage = memoryUsage;
         }
         
-        NSLog(@"* Memory Usage: %.4F, average %.4f, max %.4f", memoryUsage, totalMemoryUsage/numberOfMemoryCycles, maxMemoryUsage);
+       // NSLog(@"* Memory Usage: %.4F, average %.4f, max %.4f", memoryUsage, totalMemoryUsage/numberOfMemoryCycles, maxMemoryUsage);
     }
 }
 

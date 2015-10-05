@@ -1,7 +1,7 @@
 //
-//  BPSDWebImageViewController.m
+//  BPFastImageCacheViewController.m
 //
-//  Copyright (c) 2014 Bogdan Poplauschi
+//  Copyright (c) 2015 Wangjiawei
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,17 +21,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import "BPSDWebImageViewController.h"
-#import <UIImageView+WebCache.h>
 
+#import "BPEGOCacheViewController.h"
+#import "EGOCache.h"
 
-@implementation BPSDWebImageViewController
+@implementation BPEGOCacheViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"SDWebImage";
+        self.title = @"EGOCache";
     }
     return self;
 }
@@ -39,35 +39,41 @@
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     BPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBPCellID];
-    
     cell.textLabel.text = [NSString stringWithFormat:@"%ld %ld", (long)indexPath.section, (long)indexPath.row];
     NSURL *url = [self imageUrlForIndexPath:indexPath];
     cell.imageUrl = url;
     cell.customImageView.image = nil;
-    
     NSDate *initialDate = [NSDate date];
+    __weak typeof(cell)weakCell = cell;
+    NSString* URL = [NSString stringWithFormat:@"%@",url];
+    UIImage* image = [UIImage imageWithData:[[EGOCache globalCache] dataForKey:URL]];
+    __strong __typeof(weakCell)strongCell = weakCell;
     
-    [cell.customImageView setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
-        
-        switch (cacheType) {
-            case SDImageCacheTypeNone:
-                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
-                break;
-            case SDImageCacheTypeDisk:
-                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeDisk];
-                break;
-            case SDImageCacheTypeMemory:
+    if(image){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([strongCell.imageUrl isEqual:url]) {
+                strongCell.customImageView.image = image;
+                CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
                 [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeMemory];
-                break;
-            default:
-                break;
-        }
-    }];
-    
+            }
+        });
+    }
+    else{
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+         UIImage *sourceImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+            __strong typeof(weakCell)strongCell = weakCell;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([strongCell.imageUrl isEqual:url]) {
+                strongCell.customImageView.image = sourceImage;
+                CGFloat retrieveTime = [[NSDate date] timeIntervalSinceDate:initialDate];
+                [self trackRetrieveDuration:retrieveTime forCacheType:BPCacheTypeNone];
+            }
+            [[EGOCache globalCache] setData:UIImagePNGRepresentation(sourceImage) forKey:URL withTimeoutInterval:604800];
+        });
+        });
+    }
     return cell;
 }
-
 @end

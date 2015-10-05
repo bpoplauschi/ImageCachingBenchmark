@@ -32,6 +32,9 @@
 		43E5D81C18CD107C00091E7D /* BPFullScreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81B18CD107C00091E7D /* BPFullScreenImageViewController.m */; };
 		43E5D82018CD19AE00091E7D /* BPTMCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */; };
 		43E5D82418CD1F2500091E7D /* BPHanekeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E5D82318CD1F2500091E7D /* BPHanekeViewController.m */; };
+		4564E0511B7B1748009109C4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4564E0501B7B1748009109C4 /* CoreFoundation.framework */; };
+		4577ACED1B79FC68004FAE62 /* BPPINCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4577ACEC1B79FC68004FAE62 /* BPPINCacheViewController.m */; };
+		459ACB321B7ADE740092BA3C /* BPEGOCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459ACB311B7ADE740092BA3C /* BPEGOCacheViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D190DAEBB040010604E8B5D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4371F0FE18CC4CFD00D90E35 /* ImageCachingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageCachingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4371F10118CC4CFD00D90E35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4371F10318CC4CFD00D90E35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,7 +68,7 @@
 		43E5D7F918CCF8BF00091E7D /* BPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPTableViewCell.h; sourceTree = "<group>"; };
 		43E5D7FA18CCF8BF00091E7D /* BPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTableViewCell.m; sourceTree = "<group>"; };
 		43E5D7FB18CCF8BF00091E7D /* BPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPViewController.h; sourceTree = "<group>"; };
-		43E5D7FC18CCF8BF00091E7D /* BPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPViewController.m; sourceTree = "<group>"; };
+		43E5D7FC18CCF8BF00091E7D /* BPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BPViewController.m; sourceTree = "<group>"; };
 		43E5D80118CCF8C400091E7D /* FICDTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FICDTableView.h; sourceTree = "<group>"; };
 		43E5D80218CCF8C400091E7D /* FICDTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FICDTableView.m; sourceTree = "<group>"; };
 		43E5D80518CCF8CB00091E7D /* BPNoCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPNoCacheViewController.h; sourceTree = "<group>"; };
@@ -85,8 +89,13 @@
 		43E5D81F18CD19AE00091E7D /* BPTMCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPTMCacheViewController.m; sourceTree = "<group>"; };
 		43E5D82218CD1F2500091E7D /* BPHanekeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHanekeViewController.h; sourceTree = "<group>"; };
 		43E5D82318CD1F2500091E7D /* BPHanekeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPHanekeViewController.m; sourceTree = "<group>"; };
+		4564E0501B7B1748009109C4 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		4577ACEB1B79FC68004FAE62 /* BPPINCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPPINCacheViewController.h; sourceTree = "<group>"; };
+		4577ACEC1B79FC68004FAE62 /* BPPINCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPPINCacheViewController.m; sourceTree = "<group>"; };
+		459ACB301B7ADE740092BA3C /* BPEGOCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPEGOCacheViewController.h; sourceTree = "<group>"; };
+		459ACB311B7ADE740092BA3C /* BPEGOCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPEGOCacheViewController.m; sourceTree = "<group>"; };
+		746AE5CA4981850ADD4FF4D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7DF61607AD5D47F1B41C966F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B104E612267F4AA481421A00 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4564E0511B7B1748009109C4 /* CoreFoundation.framework in Frameworks */,
 				4371F10418CC4CFD00D90E35 /* CoreGraphics.framework in Frameworks */,
 				4371F10618CC4CFD00D90E35 /* UIKit.framework in Frameworks */,
 				4371F10218CC4CFD00D90E35 /* Foundation.framework in Frameworks */,
@@ -121,7 +131,7 @@
 				4371F12918CC4CFE00D90E35 /* ImageCachingTestTests */,
 				4371F10018CC4CFD00D90E35 /* Frameworks */,
 				4371F0FF18CC4CFD00D90E35 /* Products */,
-				B104E612267F4AA481421A00 /* Pods.xcconfig */,
+				F95CC7AABC4F482F277FBE59 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +147,7 @@
 		4371F10018CC4CFD00D90E35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4564E0501B7B1748009109C4 /* CoreFoundation.framework */,
 				4371F10118CC4CFD00D90E35 /* Foundation.framework */,
 				4371F10318CC4CFD00D90E35 /* CoreGraphics.framework */,
 				4371F10518CC4CFD00D90E35 /* UIKit.framework */,
@@ -158,6 +169,8 @@
 				43E5D81618CD09CB00091E7D /* AFNetworking */,
 				43E5D81D18CD199D00091E7D /* TMCache */,
 				43E5D82118CD1F1B00091E7D /* Haneke */,
+				4577ACEA1B79FC68004FAE62 /* PINCache */,
+				451A84831B79FF0500B3A5B7 /* EGOCache */,
 				4371F10818CC4CFE00D90E35 /* Supporting Files */,
 			);
 			path = ImageCachingTest;
@@ -274,6 +287,33 @@
 			path = Haneke;
 			sourceTree = "<group>";
 		};
+		451A84831B79FF0500B3A5B7 /* EGOCache */ = {
+			isa = PBXGroup;
+			children = (
+				459ACB301B7ADE740092BA3C /* BPEGOCacheViewController.h */,
+				459ACB311B7ADE740092BA3C /* BPEGOCacheViewController.m */,
+			);
+			path = EGOCache;
+			sourceTree = "<group>";
+		};
+		4577ACEA1B79FC68004FAE62 /* PINCache */ = {
+			isa = PBXGroup;
+			children = (
+				4577ACEB1B79FC68004FAE62 /* BPPINCacheViewController.h */,
+				4577ACEC1B79FC68004FAE62 /* BPPINCacheViewController.m */,
+			);
+			path = PINCache;
+			sourceTree = "<group>";
+		};
+		F95CC7AABC4F482F277FBE59 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				746AE5CA4981850ADD4FF4D6 /* Pods.debug.xcconfig */,
+				3D190DAEBB040010604E8B5D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -381,7 +421,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3524ED76B65345A5A50CA7A1 /* Check Pods Manifest.lock */ = {
@@ -410,6 +450,8 @@
 				43E5D7FE18CCF8BF00091E7D /* BPTableViewCell.m in Sources */,
 				43E5D7FD18CCF8BF00091E7D /* BPAppDelegate.m in Sources */,
 				43E5D80718CCF8CB00091E7D /* BPNoCacheViewController.m in Sources */,
+				4577ACED1B79FC68004FAE62 /* BPPINCacheViewController.m in Sources */,
+				459ACB321B7ADE740092BA3C /* BPEGOCacheViewController.m in Sources */,
 				43E5D81918CD0A0800091E7D /* BPAFNetworkingViewController.m in Sources */,
 				43E5D7FF18CCF8BF00091E7D /* BPViewController.m in Sources */,
 				4371F10E18CC4CFE00D90E35 /* main.m in Sources */,
@@ -535,30 +577,38 @@
 		};
 		4371F13418CC4CFE00D90E35 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B104E612267F4AA481421A00 /* Pods.xcconfig */;
+			baseConfigurationReference = 746AE5CA4981850ADD4FF4D6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: fang yi (3Q7C63JGAB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fang yi (3Q7C63JGAB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageCachingTest/ImageCachingTest-Prefix.pch";
 				INFOPLIST_FILE = "ImageCachingTest/ImageCachingTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c2285ab8-2b03-416a-a97a-f3a2902d36ad";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		4371F13518CC4CFE00D90E35 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B104E612267F4AA481421A00 /* Pods.xcconfig */;
+			baseConfigurationReference = 3D190DAEBB040010604E8B5D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: fang yi (3Q7C63JGAB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fang yi (3Q7C63JGAB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageCachingTest/ImageCachingTest-Prefix.pch";
 				INFOPLIST_FILE = "ImageCachingTest/ImageCachingTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c2285ab8-2b03-416a-a97a-f3a2902d36ad";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

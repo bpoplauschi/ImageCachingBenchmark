@@ -64,12 +64,20 @@ int     numberOfRetrieves[3];
     }
     return self;
 }
+/*
+- (NSURL*)imageUrlForIndexPath:(NSIndexPath *)inIndexPath {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/Image%03ld.jpg", (long)inIndexPath.row]];
+        NSLog(@"%@",url);
+        return url;
+}
+*/
 
 - (NSURL*)imageUrlForIndexPath:(NSIndexPath *)inIndexPath {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03ld.jpg", (long)inIndexPath.row]];
-    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://raw.githubusercontent.com/wangjwchn/TestImage/master/Image%03ld.jpg", (long)inIndexPath.row]];
+    //NSLog(@"%@",url);
     return url;
 }
+
 
 - (void)trackRetrieveDuration:(CGFloat)inDuration forCacheType:(BPCacheType)inCacheType {
     numberOfRetrieves[inCacheType] ++;
@@ -95,14 +103,14 @@ int     numberOfRetrieves[3];
             cacheTypeString = @"Disk";
             break;
     }
-    
-    NSLog(@"[%@][%@] retrieved in %.4f, average %.4f, min %.4f, max %.4f",
-          self.title,
-          cacheTypeString,
-          inDuration,
-          totalRetrieveDuration[inCacheType] / numberOfRetrieves[inCacheType],
-          minRetrieveDuration[inCacheType],
-          maxRetrieveDuration[inCacheType]);
+    NSLog(@"%f",inDuration);
+//    NSLog(@"[%@][%@] retrieved in %.4f, average %.4f, min %.4f, max %.4f",
+//          self.title,
+//          cacheTypeString,
+//          inDuration,
+//          totalRetrieveDuration[inCacheType] / numberOfRetrieves[inCacheType],
+//          minRetrieveDuration[inCacheType],
+//          maxRetrieveDuration[inCacheType]);
 }
 
 - (void)viewDidLoad {
@@ -135,7 +143,7 @@ int     numberOfRetrieves[3];
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 30;
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
