@@ -305,6 +305,7 @@ From the graphs and charts,we can easy to see that
  - Because the selection of measurement interval is small, the FPS not up to 60 doesn’t means that we can see the lag definitely. 
 
  - But from the graphs we can still see that all but EGOCache have good performance, I can also see that from the mobile screen 
+
 ##Summary
 From the data we measured, I think **AFNetworking** has the best performance except in the respect of first load time, but I think the performance of first load time accounts for very small proportion of all performance.
 
