@@ -8,11 +8,11 @@ Benchmark tests for iOS image caching solutions.
 The current GitHub page here contains the revised benchmarks from [@wangjwchn](https://github.com/wangjwchn).
 
 ##Introduction
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the past years, iOS apps have become more and more visually appealing. Displaying images is a key part of that, that’s why most of them use images that need to be downloaded and rendered. Most developers have faced the need to populate table views or collection views with images. Downloading the images is resource consuming (cellular data, battery, CPU, …), so in order to minimize this the caching model appeared.
+In the past years, iOS apps have become more and more visually appealing. Displaying images is a key part of that, that’s why most of them use images that need to be downloaded and rendered. Most developers have faced the need to populate table views or collection views with images. Downloading the images is resource consuming (cellular data, battery, CPU, …), so in order to minimize this the caching model appeared.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To achieve a great user experience, it’s important to understand what is going on under the iOS hood when we cache and load images.
+To achieve a great user experience, it’s important to understand what is going on under the iOS hood when we cache and load images.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also, the benchmarks on the most used image caching open source libraries can be of great help when choosing your solution.
+Also, the benchmarks on the most used image caching open source libraries can be of great help when choosing your solution.
 
 ## Classical approach
 
@@ -72,13 +72,9 @@ if ([self hasImageDataForURL:imageUrl] {
 
 #### Is Core Data a good candidate?
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here is a [benchmark of image caching using Core Data versus File System](http://biasedbit.com/filesystem-vs-coredata-image-cache/), the results are recommending the File System (as we are already accustomed to).
+Here is a [benchmark of image caching using Core Data versus File System](http://biasedbit.com/filesystem-vs-coredata-image-cache/), the results are recommending the File System (as we are already accustomed to).
 
-<br />
-<br />
-<br />
 #Benchmark
-
 
 ##Libraries tested
 - [SDWebImage](https://github.com/rs/SDWebImage) - [3.7.3](https://github.com/rs/SDWebImage/releases/tag/3.7.3)
