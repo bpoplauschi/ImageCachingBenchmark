@@ -7,7 +7,7 @@ Benchmark tests for iOS image caching solutions.
 
 The current GitHub page here contains the revised benchmarks from [@wangjwchn](https://github.com/wangjwchn).
 
-##Introduction
+## Introduction
 In the past years, iOS apps have become more and more visually appealing. Displaying images is a key part of that, that’s why most of them use images that need to be downloaded and rendered. Most developers have faced the need to populate table views or collection views with images. Downloading the images is resource consuming (cellular data, battery, CPU, …), so in order to minimize this the caching model appeared.
 
 To achieve a great user experience, it’s important to understand what is going on under the iOS hood when we cache and load images.
@@ -40,7 +40,7 @@ if ([self hasImageDataForURL:imageUrl] {
 }
 ```
 
-####FPS simple math: 
+#### FPS simple math: 
 
 - 60 FPS is our ideal for any UI update, so the experience is flawless
 - 60FPS => 16.7ms per frame. This means that if any main-queue operation takes longer than 16.7 ms, the scrolling FPS will drop, since the CPU will be busy doing something else than rendering UI.
@@ -74,9 +74,9 @@ To find out more about imaging on iOS, how the SDK frameworks work (CoreGraphics
 
 Here is a [benchmark of image caching using Core Data versus File System](http://biasedbit.com/filesystem-vs-coredata-image-cache/), the results are recommending the File System (as we are already accustomed to).
 
-#Benchmark
+# Benchmark
 
-##Libraries tested
+## Libraries tested
 - [SDWebImage](https://github.com/rs/SDWebImage) - [3.7.3](https://github.com/rs/SDWebImage/releases/tag/3.7.3)
 - [FastImageCache](https://github.com/path/FastImageCache) - [1.3](https://github.com/path/FastImageCache/releases/tag/1.3)
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - [2.5.4](https://github.com/AFNetworking/AFNetworking/releases/tag/2.5.4)
@@ -88,17 +88,17 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
 *Note: AFNetworking was added to the comparison because it benefits of disk caching from iOS 7 (due to NSURLCache).*
 
 <br />
-##TEST1 Load Time
-####Get the time of first load：
-######Using statistical methods
+## TEST1 Load Time
+#### Get the time of first load：
+###### Using statistical methods
  - the APP load 50 same images each time, but those images **have different URLs**.
  
-######How?
+###### How?
  - Open each program of Cache and wait for the finish of downloading from network.
  - Restart the APP and open each program again. Scroll to the bottom, the console will output the time of first loading of 50 images. Back to the menu and open other programs and scroll to the bottom again.
  - Repeat step 2 ten times, we have the time of load time. 
 
-######Result
+###### Result
  - Raw data are [here](http://htmlpreview.github.io/?https://github.com/wangjwchn/ImageCachingBenchmark/blob/master/tables/table2.html).
  - Statistical results
 
@@ -109,7 +109,7 @@ Here is a [benchmark of image caching using Core Data versus File System](http:/
 
  - The reason for the pattern of statistical data is that, when you open a program,first nine images will be displayed immediately instead of being triggered by scroll the screen.It will take more time. I don’t want to delete them from the data, because I think they are also a part of the performance evaluation.
 
-######Conclusion
+###### Conclusion
 From the graphs, we can easy to see that 
 
  - **FastImageCache** is the best in this respect.
@@ -118,15 +118,15 @@ From the graphs, we can easy to see that
 
 <br />
 
-##Get the time of scroll load：
-######Using statistical methods
+## Get the time of scroll load：
+###### Using statistical methods
  - the APP load 50 same images each time, but those images **have different URLs**.
  
-######HOW?
+###### HOW?
  - After testing the time of first load, we scroll back and the console will output the time of the time of scroll load. Some of the Caches load images from disk and some of the Caches load images from memory. We will separate the data by that.
 
  
-######Result
+###### Result
  - Raw data are [here](http://htmlpreview.github.io/?https://github.com/wangjwchn/ImageCachingBenchmark/blob/master/tables/table2.html).
  - Statistical results
  <p align="left" >
@@ -136,31 +136,31 @@ From the graphs, we can easy to see that
   <img src="graphs/scrollloadtime3.png">
  </p>
  
-######Conclusion
+###### Conclusion
 From the graphs, we can easy to see that
  
  - AFNetworking is better than SDWebImage or Haneke.
  - PINCache is better than TMCache,EGOCache,FastImageCache.
  
 
-######Note
+###### Note
 
  - I only show the statistical graph instead of statistical data such as standard deviation and average, because I think we can see all the result we want though the graphs clearly.
 
 
 <br />
-##Test2 Memory Usage
-######Using statistical methods
+## Test2 Memory Usage
+###### Using statistical methods
  - The APP load 30 different images each time.
 
-######HOW?
+###### HOW?
  - After the first load step, open each program of Cache again and scroll to the bottom, record data of memory usage at this moment. Then click to zoom in and record the data, then end this program of Cache, go back to the main menu and record the data of memory usage.
  - Restart the APP, open each program and keep scrolling for about 3 minutes, record the memory usage during this period of time.
 
-######Result
+###### Result
  - Statistical results
 
-######measure 1
+###### measure 1
  
  <table style="border:0px solid black; text-align:center; font-size:12px;">
 <tbody>
@@ -224,91 +224,91 @@ From the graphs, we can easy to see that
 </table>
 <br />
 
-######measure 2
+###### measure 2
  
-###SDWebImageCache:
+### SDWebImageCache:
 <p align="left" >
   <img src="graphs/memory1.jpg">
 </p>
-###FastImageCache: 
+### FastImageCache: 
 <p align="left" >
    <img src="graphs/memory2.jpg">
 </p>
-###AFNetworking: 
+### AFNetworking: 
 <p align="left" >
   <img src="graphs/memory3.jpg">
 </p>
-###TMCache:
+### TMCache:
 <p align="left" >
   <img src="graphs/memory4.jpg">
 </p>
-###Haneke:
+### Haneke:
 <p align="left" >
   <img src="graphs/memory5.jpg">
 </p>
-###PINCache:
+### PINCache:
 <p align="left" >
   <img src="graphs/memory6.jpg">
 </p>
-###EGOCache:
+### EGOCache:
 <p align="left" >
   <img src="graphs/memory7.jpg">
 </p>
 
-######Conclusion
+###### Conclusion
 From the graphs and charts,we can easy to see that
 
  - SDWebImage,FastImageCache and AFNetworking have good performance on the memory usage of stationary state.
  - SDWebImage,FastImageCache,TMCache and Haneke have some problems on memory leak when we keep the state of scrolling.
 
 
-##Test3 FPS and CPU Usage
-######Using statistical methods
+## Test3 FPS and CPU Usage
+###### Using statistical methods
 - The APP load 30 different images each time.
 
-######HOW?
+###### HOW?
 - After the first load step, we open each program of Cache again and scroll to the bottom, then we keep scrolling for about 10 seconds and record the FPS and CPU usage during this period of time.
 
-######Result
+###### Result
  - Statistical results
 
-###SDWebImageCache:
+### SDWebImageCache:
 <p align="left" >
   <img src="graphs/FPS1.jpg">
 </p>
-###FastImageCache:
+### FastImageCache:
 <p align="left" > 
    <img src="graphs/FPS2.jpg">
 </p> 
-###AFNetworking:
+### AFNetworking:
 <p align="left" > 
   <img src="graphs/FPS3.jpg">
 </p>
-###TMCache:
+### TMCache:
 <p align="left" >
   <img src="graphs/FPS4.jpg">
 </p>
-###Haneke:
+### Haneke:
 <p align="left" >
   <img src="graphs/FPS5.jpg">
 </p>
-###PINCache:
+### PINCache:
 <p align="left" >
   <img src="graphs/FPS6.jpg">
 </p>
-###EGOCache:
+### EGOCache:
 <p align="left" >
   <img src="graphs/FPS7.jpg">
 </p>
 
-######Conclusion
+###### Conclusion
  - Because the selection of measurement interval is small, the FPS not up to 60 doesn’t means that we can see the lag definitely. 
 
  - But from the graphs we can still see that all but EGOCache have good performance, I can also see that from the mobile screen 
 
-##Summary
+## Summary
 From the data we measured, I think **AFNetworking** has the best performance except in the respect of first load time, but I think the performance of first load time accounts for very small proportion of all performance.
 
-##Note
+## Note
  - All those data above were measured by Jiawei Wang. If you have any questions, please do not hesitate to let me know([@wangjwchn](https://github.com/wangjwchn)). 
  - Please give credit to the original author [@bpoplauschi](https://github.com/bpoplauschi) when you use it elsewhere.
